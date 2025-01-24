@@ -1,0 +1,48 @@
+{
+    "about": {
+        "name": "John Paul Fernandez",
+        "personalDescription": "Developer with a passion for using a variety of tools and technologies to build robust applications.",
+        "socialLinks": {
+            "linkedin": "https://www.linkedin.com/in/john-paul-fernandez-a11962262/",
+            "github": "https://github.com/JaypeeFern"
+        }
+    },
+    "experiences": [
+        {
+            "position": "Developer",
+            "companyName": "Insert Company",
+            "dateOfEmployment": {
+                "from": "July 14, 2024",
+                "to": "Present"
+            }
+        }
+    ],
+    "skills": [
+        "React",
+        "NestJS",
+        "Docker",
+        "MongoDB",
+        "PostgreSQL",
+        "NextJS",
+        "Firebase",
+        "Tailwind",
+        "Git",
+        "Nginx",
+        "Symfony"
+    ],
+    "projects": [
+        {
+            "projectName": "Insert Project Name",
+            "projectDescription": "Insert Project Description",
+            "tools": [
+                "NodeJS",
+                "MongoDB",
+                "Docker"
+            ],
+            "dateOfDevelopment": {
+                "from": "July 14, 2024",
+                "to": "Present"
+            }
+        }
+    ]
+}
