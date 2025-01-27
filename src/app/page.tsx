@@ -1,15 +1,15 @@
 import About from "@/components/About";
-import Experience from "@/components/Experiences";
-import Projects from "@/components/Projects";
-import Skills from "@/components/Skills";
+// import Experience from "@/components/Experiences";
+// import Projects from "@/components/Projects";
+// import Skills from "@/components/Skills";
 
 export default function Home() {
   return (
-    <div className="*:py-56 *:flex *:justify-center *:items-center *:border-b-2 *:text-3xl">
+    <div className="*:flex *:justify-center *:items-center">
       <About />
-      <Experience />
+      {/* <Experience />
       <Skills />
-      <Projects />
+      <Projects /> */}
     </div>
   );
 }

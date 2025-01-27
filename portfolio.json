@@ -1,11 +1,12 @@
 {
     "about": {
         "name": "John Paul Fernandez",
-        "personalDescription": "Developer with a passion for using a variety of tools and technologies to build robust applications.",
+        "personalDescription": "Web Developer with a passion for using a variety of tools and technologies to build robust applications.",
         "socialLinks": {
             "linkedin": "https://www.linkedin.com/in/john-paul-fernandez-a11962262/",
             "github": "https://github.com/JaypeeFern"
-        }
+        },
+        "currentStatus": "Available for work"
     },
     "experiences": [
         {
