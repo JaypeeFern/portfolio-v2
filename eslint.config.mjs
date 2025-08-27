@@ -11,6 +11,11 @@ const compat = new FlatCompat({
 
 const eslintConfig = [...compat.extends('next/core-web-vitals', 'next/typescript')];
 
+// Ensure ESLint (CLI and programmatic) ignores Next.js build output
+eslintConfig.unshift({
+	ignores: ['**/.next/**', 'coverage', 'node_modules', 'next-env.d.ts'],
+});
+
 // Relax some strict rules for test files where usage of `any`, unused
 // variables and non-const temporaries is common and acceptable.
 eslintConfig.push({
