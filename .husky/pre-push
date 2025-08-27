@@ -1,2 +1,9 @@
 npm run lint || { echo 'Lint failed, aborting push.'; exit 1; }
-npm test || { echo 'Tests failed, aborting push.'; exit 1; }
+
+# Only run tests if test files are present in the repository. This prevents
+# the hook failing on projects that don't yet have tests.
+if git ls-files | grep -E '\.(test|spec)\.(js|jsx|ts|tsx)$' -q || git ls-files | grep -E '/__tests__/|__tests__' -q; then
+	npm test || { echo 'Tests failed, aborting push.'; exit 1; }
+else
+	echo 'No tests detected, skipping tests.'
+fi
