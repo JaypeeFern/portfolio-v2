@@ -1,1 +1,0 @@
-WIP Portfolio using NextJS
