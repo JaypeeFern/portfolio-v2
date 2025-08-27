@@ -1,0 +1,2 @@
+npm run lint || { echo 'Lint failed, aborting push.'; exit 1; }
+npm test || { echo 'Tests failed, aborting push.'; exit 1; }
