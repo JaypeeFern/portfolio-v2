@@ -1,33 +1,153 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
 
-@font-face {
-  font-family: 'AlexerMedium';
-  src: url('/fonts/AlexerMedium.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    color-scheme: light;
+
+    --background: 210 40% 98%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 214 88% 37%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 190 95% 36%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 72.2% 50.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 214 88% 37%;
+
+    --surface: 0 0% 100%;
+    --surface-foreground: 222.2 47.4% 11.2%;
+    --surface-muted: 210 40% 98%;
+    --surface-strong: 210 40% 96.1%;
+    --hero-glow: 214 88% 37%;
+    --hero-glow-secondary: 190 95% 36%;
+    --footer-foreground: 215.4 16.3% 46.9%;
+    --shadow-color: 214 88% 37%;
+
+    --radius: 1rem;
+  }
+
+  .dark {
+    color-scheme: dark;
+
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 47% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 262 83% 58%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 199 89% 48%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 243.4 75.4% 58.6%;
+
+    --surface: 222.2 47% 8%;
+    --surface-foreground: 210 40% 98%;
+    --surface-muted: 222.2 40% 10%;
+    --surface-strong: 222.2 35% 14%;
+    --hero-glow: 262 83% 58%;
+    --hero-glow-secondary: 199 89% 48%;
+    --footer-foreground: 215 20.2% 65.1%;
+    --shadow-color: 262 83% 58%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--scroll-padding, 80px);
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased transition-colors duration-300;
+    font-family: var(--font-sans), sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding: var(--scroll-padding, 5rem);
-}
+@layer components {
+  .glass {
+    background-color: hsl(var(--surface) / 0.72);
+    @apply border border-border/70 backdrop-blur-md;
+  }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: 'AlexerMedium';
+  .glass-dark {
+    background-color: hsl(var(--surface-strong) / 0.78);
+    @apply border border-border/70 backdrop-blur-lg;
+  }
+
+  .section-container {
+    @apply mx-auto max-w-7xl px-5 sm:px-6 py-12 md:py-20;
+  }
+
+  .font-display {
+    font-family: var(--font-display), var(--font-sans), sans-serif;
+  }
+
+  .section-label {
+    font-family: var(--font-display), var(--font-sans), sans-serif;
+    @apply text-[11px] uppercase tracking-[0.28em] text-muted-foreground;
+  }
+
+  .section-kicker {
+    font-family: var(--font-display), var(--font-sans), sans-serif;
+    @apply text-sm uppercase tracking-[0.24em] text-primary;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
+  }
+
+  .app-background {
+    background:
+      radial-gradient(circle at top, hsl(var(--hero-glow) / 0.18), transparent 34%),
+      radial-gradient(circle at bottom right, hsl(var(--hero-glow-secondary) / 0.14), transparent 28%),
+      hsl(var(--background));
+    @apply fixed inset-0 -z-10;
+  }
+
+  .hero-orb-primary {
+    background-color: hsl(var(--hero-glow) / 0.24);
+  }
+
+  .hero-orb-secondary {
+    background-color: hsl(var(--hero-glow-secondary) / 0.18);
+  }
 }

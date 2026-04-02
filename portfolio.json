@@ -1,49 +1,30 @@
 {
+    "$schema": "./portfolio.schema.json",
     "about": {
         "name": "John Paul Fernandez",
-        "personalDescription": "Web Developer with a passion for using a variety of tools and technologies to build robust applications.",
+        "role": "Full Stack Developer",
+        "personalDescription": "I like building web products that feel fast, clear, and dependable. Most of my work lives at the intersection of React interfaces, Next.js apps, and backend systems that are simple to scale and maintain.",
         "socialLinks": {
             "linkedin": "https://www.linkedin.com/in/john-paul-fernandez-a11962262/",
             "github": "https://github.com/JaypeeFern"
         },
-        "currentStatus": "Available for work"
+        "currentStatus": "Open to new opportunities"
     },
-    "experiences": [
-        {
-            "position": "Developer",
-            "companyName": "Insert Company",
-            "dateOfEmployment": {
-                "from": "July 14, 2024",
-                "to": "Present"
-            }
-        }
-    ],
+    "experiences": [],
     "skills": [
         "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Node.js",
         "NestJS",
-        "Docker",
-        "MongoDB",
         "PostgreSQL",
-        "NextJS",
-        "Firebase",
-        "Tailwind",
+        "MongoDB",
+        "Docker",
         "Git",
-        "Nginx",
-        "Symfony"
+        "Firebase",
+        "Nginx"
     ],
-    "projects": [
-        {
-            "projectName": "Insert Project Name",
-            "projectDescription": "Insert Project Description",
-            "tools": [
-                "NodeJS",
-                "MongoDB",
-                "Docker"
-            ],
-            "dateOfDevelopment": {
-                "from": "July 14, 2024",
-                "to": "Present"
-            }
-        }
-    ]
+    "projects": [],
+    "metadata": {}
 }

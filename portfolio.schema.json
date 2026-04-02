@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Portfolio Data",
+  "type": "object",
+  "required": ["about", "experiences", "skills", "projects", "metadata"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "about": {
+      "type": "object",
+      "required": ["name", "role", "personalDescription", "socialLinks", "currentStatus"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "personalDescription": {
+          "type": "string"
+        },
+        "socialLinks": {
+          "type": "object",
+          "required": ["linkedin", "github"],
+          "additionalProperties": false,
+          "properties": {
+            "linkedin": {
+              "type": "string",
+              "format": "uri"
+            },
+            "github": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        },
+        "currentStatus": {
+          "type": "string"
+        }
+      }
+    },
+    "experiences": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/experience"
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/project"
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "dateRange": {
+      "type": "object",
+      "required": ["from", "to"],
+      "additionalProperties": false,
+      "properties": {
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        }
+      }
+    },
+    "experience": {
+      "type": "object",
+      "required": ["position", "companyName", "dateOfEmployment", "description"],
+      "additionalProperties": false,
+      "properties": {
+        "position": {
+          "type": "string"
+        },
+        "companyName": {
+          "type": "string"
+        },
+        "dateOfEmployment": {
+          "$ref": "#/$defs/dateRange"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "projectLinks": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "github": {
+          "type": "string",
+          "format": "uri"
+        },
+        "live": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "project": {
+      "type": "object",
+      "required": ["projectName", "projectDescription", "tools", "dateOfDevelopment"],
+      "additionalProperties": false,
+      "properties": {
+        "projectName": {
+          "type": "string"
+        },
+        "projectDescription": {
+          "type": "string"
+        },
+        "tools": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "dateOfDevelopment": {
+          "$ref": "#/$defs/dateRange"
+        },
+        "links": {
+          "$ref": "#/$defs/projectLinks"
+        }
+      }
+    }
+  }
+}
