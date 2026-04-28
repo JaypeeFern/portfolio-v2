@@ -14,12 +14,17 @@ export interface PortfolioAbout {
   contactEmail?: string;
   ctaLinks?: PortfolioCtaLink[];
   highlights?: PortfolioHighlight[];
+  stats?: PortfolioStats;
   socialLinks: {
     linkedin: string;
     github: string;
   };
   currentStatus: string;
   statusLabel?: string;
+}
+
+export interface PortfolioStats {
+  yearsBuilding?: string;
 }
 
 export interface PortfolioCtaLink {

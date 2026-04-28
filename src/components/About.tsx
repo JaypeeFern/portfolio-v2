@@ -1,17 +1,48 @@
 import {
     ArrowRight,
     CalendarDays,
-    CheckCircle2,
-    Clock3,
+    Code2,
+    Grid2X2,
     Globe2,
-    Layers3,
+    Handshake,
+    Mail,
+    Sparkles,
 } from "lucide-react";
+import Image from "next/image";
+import portraitImage from "../../public/portrait.jpg";
 import { portfolioData } from "@/lib/portfolio";
 import BrandIcon from "./BrandIcon";
 import { MotionItem, MotionReveal, MotionStagger } from "./Motion";
 import SkillMarquee from "./SkillMarquee";
 
 const featuredSkillCount = 5;
+const helpItems = [
+    {
+        icon: Sparkles,
+        value: "Build polished web apps",
+        label: "Responsive, accessible interfaces that feel clear and intentional.",
+    },
+    {
+        icon: Handshake,
+        value: "Connect product to code",
+        label: "I care about the user journey, not just the component tree.",
+    },
+    {
+        icon: Code2,
+        value: "Turn ideas into usable products",
+        label: "I help shape rough concepts into clear, working experiences people can actually use.",
+    },
+];
+const identityStats = [
+    {
+        icon: CalendarDays,
+        label: "Years building web products",
+    },
+    {
+        icon: Grid2X2,
+        label: "Projects completed",
+    },
+];
 
 function getInitials(name: string) {
     return name
@@ -27,12 +58,25 @@ export default function About() {
     const about = portfolioData.about;
     const featuredSkills = portfolioData.skills.slice(0, featuredSkillCount);
     const ctaLinks = about.ctaLinks ?? [];
-    const hasLocation = Boolean(about.location);
-    const hasTimezone = Boolean(about.timezone);
-    const hasHighlights = Boolean(about.highlights?.length);
-    const showAtAGlance = hasHighlights || hasLocation || hasTimezone || Boolean(about.currentStatus) || featuredSkills.length > 0;
     const primaryCta = ctaLinks[0];
-    const focusText = featuredSkills.slice(0, 3).join(" / ");
+    const locationLabel = [about.timezone, "Available"].filter(Boolean).join(" / ");
+    const yearsBuilding = about.stats?.yearsBuilding ?? "0";
+    const projectsCompleted = String(portfolioData.projects.length);
+    const stats = [
+        {
+            ...identityStats[0],
+            value: yearsBuilding,
+        },
+        {
+            ...identityStats[1],
+            value: projectsCompleted,
+        },
+        {
+            icon: Globe2,
+            value: about.location ?? "Philippines",
+            label: locationLabel,
+        },
+    ];
 
     return (
         <section id="about" className="hero-section">
@@ -97,107 +141,107 @@ export default function About() {
                 </MotionStagger>
 
                 <MotionReveal className="hero-proof" delay={0.16}>
-                    {showAtAGlance && (
-                        <div className="space-y-7">
-                            <div className="section-heading-line">
-                                <h2>At a glance</h2>
+                    <div className="hero-identity">
+                        <div className="identity-card">
+                            <div className="identity-portrait" aria-label="Portrait of John Paul Fernandez">
+                                <Image
+                                    src={portraitImage}
+                                    alt="Portrait of John Paul Fernandez"
+                                    width={900}
+                                    height={1125}
+                                    priority
+                                    className="identity-portrait__image"
+                                />
+                                <span className="identity-portrait__corner identity-portrait__corner--top" aria-hidden="true" />
+                                <span className="identity-portrait__corner identity-portrait__corner--bottom" aria-hidden="true" />
+                                <span className="identity-portrait__scan" aria-hidden="true" />
                             </div>
 
-                            <div className="glance-grid">
-                                {about.highlights?.map((highlight) => (
-                                    <div key={`${highlight.label}-${highlight.value}`} className="glance-item">
-                                        <CalendarDays className="h-5 w-5 text-primary" strokeWidth={1.8} />
-                                        <div>
-                                            <p className="glance-value">{highlight.value}</p>
-                                            <p>{highlight.label}</p>
-                                            {highlight.description && <p>{highlight.description}</p>}
-                                        </div>
-                                    </div>
-                                ))}
+                            <div className="identity-status">
+                                <div className="flex items-center gap-3">
+                                    <span className="status-dot status-dot--small" aria-hidden="true" />
+                                    <p className="identity-status__label">{about.statusLabel ?? "Available"}</p>
+                                </div>
 
-                                {about.currentStatus && (
-                                    <div className="glance-item">
-                                        <CheckCircle2 className="h-5 w-5 text-primary" strokeWidth={1.8} />
-                                        <div>
-                                            <p className="glance-value">{about.statusLabel ?? "Status"}</p>
-                                            <p>{about.currentStatus}</p>
-                                        </div>
-                                    </div>
-                                )}
+                                <div>
+                                    <h2 className="identity-status__title">
+                                        {about.currentStatus}
+                                    </h2>
+                                </div>
 
-                                {hasLocation && (
-                                    <div className="glance-item">
-                                        <Globe2 className="h-5 w-5 text-primary" strokeWidth={1.8} />
-                                        <div>
-                                            <p className="glance-value">{about.location}</p>
-                                            <p>Current location</p>
-                                        </div>
-                                    </div>
-                                )}
+                                <div className="divider" />
 
-                                {hasTimezone && (
-                                    <div className="glance-item">
-                                        <Clock3 className="h-5 w-5 text-primary" strokeWidth={1.8} />
-                                        <div>
-                                            <p className="glance-value">{about.timezone}</p>
-                                            <p>Working timezone</p>
-                                        </div>
-                                    </div>
-                                )}
-
-                                {focusText && (
-                                    <div className="glance-item">
-                                        <Layers3 className="h-5 w-5 text-primary" strokeWidth={1.8} />
-                                        <div>
-                                            <p className="glance-value">Current focus</p>
-                                            <p>{focusText}</p>
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                    )}
-
-                    <div id="contact" className="contact-panel">
-                        <div className="flex items-start gap-3">
-                            <span className="status-dot status-dot--heading" aria-hidden="true" />
-                            <div>
-                                <h2 className="font-display text-xl font-semibold tracking-tight">
-                                    {about.statusLabel ?? about.currentStatus}
-                                </h2>
-                                {about.statusLabel && (
-                                    <p className="text-sm text-muted-foreground">{about.currentStatus}</p>
-                                )}
+                                <div className="identity-contact-list">
+                                    {about.contactEmail && (
+                                        <a
+                                            href={`mailto:${about.contactEmail}`}
+                                            className="contact-link"
+                                        >
+                                            <Mail className="h-5 w-5 text-foreground" strokeWidth={1.8} />
+                                            Contact Email
+                                        </a>
+                                    )}
+                                    <a
+                                        href={about.socialLinks.linkedin}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="contact-link"
+                                    >
+                                        <BrandIcon name="linkedin" className="h-5 w-5" useBrandColor />
+                                        LinkedIn
+                                    </a>
+                                    <a
+                                        href={about.socialLinks.github}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="contact-link"
+                                    >
+                                        <BrandIcon name="github" className="h-5 w-5" useBrandColor />
+                                        GitHub
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="divider" />
+                        <div className="identity-help-card">
+                            <div className="identity-help-main">
+                                <div className="section-heading-line">
+                                    <h2>How I Can Help</h2>
+                                </div>
 
-                        <div className="space-y-4">
-                            <a
-                                href={about.socialLinks.linkedin}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="contact-link"
-                            >
-                                <BrandIcon name="linkedin" className="h-5 w-5" useBrandColor />
-                                LinkedIn
-                            </a>
-                            <a
-                                href={about.socialLinks.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="contact-link"
-                            >
-                                <BrandIcon name="github" className="h-5 w-5" useBrandColor />
-                                GitHub
-                            </a>
+                                <div className="identity-help-list">
+                                    {helpItems.map((item) => {
+                                        const Icon = item.icon;
+
+                                        return (
+                                            <div key={item.value} className="glance-item">
+                                                <Icon className="h-5 w-5 text-primary" strokeWidth={1.8} />
+                                                <div>
+                                                    <p className="glance-value">{item.value}</p>
+                                                    <p>{item.label}</p>
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+
+                            <div className="identity-stat-list">
+                                {stats.map((stat) => {
+                                    const Icon = stat.icon;
+
+                                    return (
+                                        <div key={stat.value} className="identity-stat">
+                                            <Icon className="h-6 w-6 text-primary" strokeWidth={1.8} />
+                                            <div>
+                                                <p className="identity-stat__value">{stat.value}</p>
+                                                <p>{stat.label}</p>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
                         </div>
-
-                        <a href="#contact" className="contact-panel__action" aria-label="Go to contact form">
-                            <span>Contact me</span>
-                            <ArrowRight className="h-5 w-5" strokeWidth={1.8} />
-                        </a>
                     </div>
                 </MotionReveal>
             </div>

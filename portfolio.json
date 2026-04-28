@@ -13,6 +13,9 @@
                 "href": "#projects"
             }
         ],
+        "stats": {
+            "yearsBuilding": "3+"
+        },
         "socialLinks": {
             "linkedin": "https://www.linkedin.com/in/john-paul-fernandez-a11962262/",
             "github": "https://github.com/JaypeeFern"

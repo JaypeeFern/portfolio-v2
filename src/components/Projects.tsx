@@ -10,7 +10,7 @@ export default function Projects() {
     return (
         <section id="projects" className="section-container section-block">
             <div className="section-heading-line">
-                <h2>Selected Work</h2>
+                <h2>Projects</h2>
                 {hasProjects && (
                     <a href="#projects" className="inline-flex items-center gap-2 text-sm font-medium text-primary transition hover:gap-3">
                         View all projects

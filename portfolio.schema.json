@@ -50,6 +50,9 @@
             "$ref": "#/$defs/highlight"
           }
         },
+        "stats": {
+          "$ref": "#/$defs/stats"
+        },
         "socialLinks": {
           "type": "object",
           "required": ["linkedin", "github"],
@@ -141,6 +144,15 @@
           "type": "string"
         },
         "description": {
+          "type": "string"
+        }
+      }
+    },
+    "stats": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "yearsBuilding": {
           "type": "string"
         }
       }

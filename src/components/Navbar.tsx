@@ -82,10 +82,6 @@ export default function Navbar() {
                 </ul>
 
                 <div className="ml-auto flex items-center gap-2.5">
-                    <a href="#contact" className="hidden items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/15 transition hover:-translate-y-0.5 hover:bg-primary/90 md:inline-flex">
-                        {about.currentStatus}
-                        <span className="status-dot status-dot--small" aria-hidden="true" />
-                    </a>
                     <ThemeToggle />
                     <button
                         type="button"
