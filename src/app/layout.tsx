@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import ThemeProvider from "@/components/ThemeProvider";
 import { portfolioData } from "@/lib/portfolio";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = localFont({
   src: [
@@ -87,6 +88,7 @@ export default function RootLayout({
         <main className="relative">
           {children}
         </main>
+        <SpeedInsights />
       </body>
     </html>
   );
