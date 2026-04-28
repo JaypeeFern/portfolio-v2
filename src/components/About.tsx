@@ -2,6 +2,7 @@ import {
     ArrowRight,
     CalendarDays,
     Code2,
+    Download,
     Grid2X2,
     Globe2,
     Handshake,
@@ -12,6 +13,7 @@ import Image from "next/image";
 import portraitImage from "../../public/portrait.jpg";
 import { getInitials } from "@/lib/format";
 import { portfolioData } from "@/lib/portfolio";
+import AvailabilityStatusBadge from "./AvailabilityStatusBadge";
 import BrandIcon from "./BrandIcon";
 import { MotionItem, MotionReveal, MotionStagger } from "./Motion";
 import SkillMarquee from "./SkillMarquee";
@@ -118,12 +120,12 @@ export default function About() {
                             {about.resumeUrl ? (
                                 <a href={about.resumeUrl} className="button-ghost" download>
                                     Download CV
-                                    <ArrowRight className="h-4 w-4" strokeWidth={1.8} />
+                                    <Download className="h-4 w-4" strokeWidth={1.8} />
                                 </a>
                             ) : (
                                 <button type="button" className="button-ghost" disabled title="CV not published yet">
                                     Download CV
-                                    <ArrowRight className="h-4 w-4" strokeWidth={1.8} />
+                                    <Download className="h-4 w-4" strokeWidth={1.8} />
                                 </button>
                             )}
                         </div>
@@ -149,8 +151,8 @@ export default function About() {
 
                             <div className="identity-status">
                                 <div className="flex items-center gap-3">
-                                    <span className="status-dot status-dot--small" aria-hidden="true" />
-                                    <p className="identity-status__label">{about.statusLabel ?? "Available"}</p>
+                                    <AvailabilityStatusBadge />
+                                    <p className="ps-1 identity-status__label">{about.statusLabel ?? "Available"}</p>
                                 </div>
 
                                 <div>

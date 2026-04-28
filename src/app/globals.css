@@ -46,6 +46,9 @@
     --surface-muted: 44 25% 94%;
     --surface-strong: 42 22% 90%;
     --footer-foreground: 190 10% 38%;
+    --availability: 151 86% 34%;
+    --availability-foreground: 150 100% 13%;
+    --availability-ring: 151 86% 34%;
 
     --radius: 0.5rem;
   }
@@ -86,6 +89,9 @@
     --surface-muted: 187 22% 10%;
     --surface-strong: 187 20% 14%;
     --footer-foreground: 42 12% 68%;
+    --availability: 151 86% 56%;
+    --availability-foreground: 151 100% 9%;
+    --availability-ring: 151 86% 56%;
   }
 
   * {
@@ -442,17 +448,37 @@
   }
 
   .status-dot {
-    box-shadow: 0 0 0 6px hsl(var(--primary) / 0.12);
-    @apply inline-flex h-2.5 w-2.5 rounded-full;
-    background: #2fd36c;
-    animation: status-pulse 2.5s ease-in-out infinite;
+    position: relative;
+    box-shadow:
+      0 0 0 2px hsl(var(--background)),
+      0 0 0 5px hsl(var(--availability-ring) / 0.16),
+      0 0 16px hsl(var(--availability-ring) / 0.34);
+    @apply inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full;
+    background: hsl(var(--availability));
+    color: hsl(var(--availability-foreground));
+    border: 1px solid hsl(var(--availability-ring) / 0.62);
   }
 
   .status-dot--small {
-    background: currentColor;
-    box-shadow: 0 0 0 3px rgb(255 255 255 / 0.2);
-    border: 1px solid rgb(255 255 255 / 0.35);
-    @apply h-2 w-2;
+    @apply h-4 w-4;
+  }
+
+  .status-dot svg {
+    position: relative;
+    z-index: 1;
+  }
+
+  .status-dot__ring {
+    content: "";
+    position: absolute;
+    inset: -0.35rem;
+    border-radius: 9999px;
+    border: 1px solid hsl(var(--availability-ring) / 0.32);
+    pointer-events: none;
+  }
+
+  .status-dot--small .status-dot__ring {
+    inset: -0.4rem;
   }
 
   .brand-icon {
@@ -552,18 +578,6 @@
 
   .section-block {
     @apply py-5;
-  }
-}
-
-@keyframes status-pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(0.82);
-    opacity: 0.72;
   }
 }
 
