@@ -63,7 +63,7 @@ Empty projects or experiences render intentional empty states through `src/compo
 
 ## Contact And Resume
 
-The contact form is inline, not a modal. It opens the visitor's local mail app only when `about.contactEmail` exists in `portfolio.json`.
+The contact form is inline, not a modal. It submits to `/api/contact` and sends mail through Resend when `RESEND_API_KEY` and `about.contactEmail` are configured. If delivery fails, the form shows a fallback `mailto:` link when `about.contactEmail` exists in `portfolio.json`.
 
 The `Download CV` control is disabled until `about.resumeUrl` exists. Do not point it at a fake file. If a resume PDF is added under `public/`, set `resumeUrl` to that public path.
 

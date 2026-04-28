@@ -4,7 +4,7 @@ This document outlines how the contact form in this Next.js portfolio operates, 
 
 ## Overview
 
-The portfolio uses a custom Next.js API route (`/api/contact`) to safely process contact form submissions server-side. It utilizes the `resend` Node.js SDK and `@react-email/render` to construct and deliver the emails.
+The portfolio uses a custom Next.js API route (`/api/contact`) to safely process contact form submissions server-side. It uses the `resend` Node.js SDK and a React email template passed directly to Resend.
 
 ### Key Components
 
@@ -35,7 +35,7 @@ The "To" and "From" email addresses are not hardcoded in environment variables. 
 ```
 - **To:** The email is sent *to* `contactEmail`.
 - **From:** The email is sent *from* `Portfolio <contactEmail>`.
-- **Reply-To:** The email sets the `reply_to` header as the visitor's email address.
+- **Reply-To:** The email sets the `replyTo` value as the visitor's email address.
 
 > **Important:** The domain of the `contactEmail` (e.g., `jpfernandez.dev`) **MUST** be verified in your Resend dashboard. If the domain is unverified, Resend will reject the API request.
 

@@ -2,25 +2,16 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { getInitials } from "@/lib/format";
 import { portfolioData } from "@/lib/portfolio";
 import ThemeToggle from "./ThemeToggle";
 
 const sections = [
     { name: "Home", href: "#about" },
     { name: "Work", href: "#projects" },
-    { name: "About", href: "#experiences" },
+    { name: "Experience", href: "#experiences" },
     { name: "Contact", href: "#contact" },
 ];
-
-function getInitials(name: string) {
-    return name
-        .split(" ")
-        .filter(Boolean)
-        .map((part) => part[0])
-        .join("")
-        .slice(0, 3)
-        .toUpperCase();
-}
 
 export default function Navbar() {
     const about = portfolioData.about;

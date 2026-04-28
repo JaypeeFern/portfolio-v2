@@ -10,12 +10,12 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import portraitImage from "../../public/portrait.jpg";
+import { getInitials } from "@/lib/format";
 import { portfolioData } from "@/lib/portfolio";
 import BrandIcon from "./BrandIcon";
 import { MotionItem, MotionReveal, MotionStagger } from "./Motion";
 import SkillMarquee from "./SkillMarquee";
 
-const featuredSkillCount = 5;
 const helpItems = [
     {
         icon: Sparkles,
@@ -44,19 +44,9 @@ const identityStats = [
     },
 ];
 
-function getInitials(name: string) {
-    return name
-        .split(" ")
-        .filter(Boolean)
-        .map((part) => part[0])
-        .join("")
-        .slice(0, 3)
-        .toUpperCase();
-}
-
 export default function About() {
     const about = portfolioData.about;
-    const featuredSkills = portfolioData.skills.slice(0, featuredSkillCount);
+    const hasSkills = portfolioData.skills.length > 0;
     const ctaLinks = about.ctaLinks ?? [];
     const primaryCta = ctaLinks[0];
     const locationLabel = [about.timezone, "Available"].filter(Boolean).join(" / ");
@@ -111,7 +101,7 @@ export default function About() {
                         </p>
                     </MotionItem>
 
-                    {featuredSkills.length > 0 && (
+                    {hasSkills && (
                         <MotionItem>
                             <SkillMarquee skills={portfolioData.skills} />
                         </MotionItem>

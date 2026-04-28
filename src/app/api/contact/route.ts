@@ -3,13 +3,28 @@ import { resend } from '@/lib/resend';
 import { EmailTemplate } from '@/components/EmailTemplate';
 import { portfolioData } from '@/lib/portfolio';
 
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function getFormValue(value: unknown) {
+    return typeof value === 'string' ? value.trim() : '';
+}
+
 export async function POST(request: Request) {
     try {
-        const body = await request.json();
-        const { name, email, message, _gotcha } = body;
+        const body: unknown = await request.json();
+
+        if (!body || typeof body !== 'object') {
+            return NextResponse.json({ error: 'Invalid request body' }, { status: 400 });
+        }
+
+        const formBody = body as Record<string, unknown>;
+        const name = getFormValue(formBody.name);
+        const email = getFormValue(formBody.email);
+        const message = getFormValue(formBody.message);
+        const gotcha = getFormValue(formBody._gotcha);
 
         // Honeypot check
-        if (_gotcha) {
+        if (gotcha) {
             // Silently accept without sending
             return NextResponse.json({ success: true });
         }
@@ -23,7 +38,6 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: 'Input exceeds maximum length' }, { status: 400 });
         }
 
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             return NextResponse.json({ error: 'Invalid email address' }, { status: 400 });
         }
@@ -60,7 +74,7 @@ export async function POST(request: Request) {
 
         if (error) {
             console.error('Resend error:', error);
-            return NextResponse.json({ error: error.message }, { status: 500 });
+            return NextResponse.json({ error: 'Unable to send message right now' }, { status: 500 });
         }
 
         return NextResponse.json({ success: true, data });

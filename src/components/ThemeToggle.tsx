@@ -1,15 +1,7 @@
 'use client'
 
 import { Moon, Sun } from "lucide-react";
-
-type Theme = "light" | "dark";
-
-const storageKey = "portfolio-theme";
-
-function applyTheme(theme: Theme) {
-    document.documentElement.classList.toggle("dark", theme === "dark");
-    document.documentElement.style.colorScheme = theme;
-}
+import { applyTheme, themeStorageKey } from "@/lib/theme";
 
 export default function ThemeToggle() {
     const toggleTheme = () => {
@@ -17,7 +9,7 @@ export default function ThemeToggle() {
         const nextTheme = isDark ? "light" : "dark";
 
         applyTheme(nextTheme);
-        window.localStorage.setItem(storageKey, nextTheme);
+        window.localStorage.setItem(themeStorageKey, nextTheme);
     };
 
     return (
