@@ -30,6 +30,17 @@ export async function POST(request: Request) {
 
         const contactEmail = portfolioData.about.contactEmail;
 
+        const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'Unknown IP';
+        const date = new Date().toLocaleString('en-US', { 
+            timeZoneName: 'short',
+            weekday: 'short', 
+            year: 'numeric', 
+            month: 'short', 
+            day: 'numeric', 
+            hour: 'numeric', 
+            minute: 'numeric' 
+        });
+
         // Configuration check
         if (!resend || !contactEmail) {
             console.error('Email configuration missing');
@@ -44,7 +55,7 @@ export async function POST(request: Request) {
             to: contactEmail,
             subject: `Portfolio inquiry from ${name}`,
             replyTo: email,
-            react: EmailTemplate({ name, email, message }),
+            react: EmailTemplate({ name, email, message, ip, date }),
         });
 
         if (error) {
