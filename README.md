@@ -1,131 +1,84 @@
 # Portfolio V2
 
-This is your personal portfolio site.
+Personal portfolio for John Paul Fernandez, built with Next.js, React, TypeScript, and Tailwind CSS. The current design direction is an editorial, results-focused one-page portfolio with light/dark themes, subtle Motion animations, an Embla-powered technology rail, honest empty states, and an inline contact form.
 
-If you come back to this project after a long time, these are the only things you really need to remember:
+## Quick Start
 
-## Start Here
-
-- Your actual portfolio content lives in [portfolio.json](/Users/Paul/Desktop/portfolio-v2/portfolio.json)
-- The page layout and wording live in [src/components](/Users/Paul/Desktop/portfolio-v2/src/components)
-- The overall styling and theme tokens live in [src/app/globals.css](/Users/Paul/Desktop/portfolio-v2/src/app/globals.css)
-
-## Most Common Commands
-
-```bash
+```powershell
 npm install
-npm run dev
-npm run lint
-npm run typecheck
-npm run build
+npm.cmd run dev
 ```
 
-Node version:
+Useful checks:
 
-- use Node `22`
-- see [.nvmrc](/Users/Paul/Desktop/portfolio-v2/.nvmrc)
+```powershell
+npm.cmd run lint
+npm.cmd run typecheck
+npm.cmd run build
+```
 
-## Where To Edit Things
+Node requirement: `>=20.9.0`. The local `.nvmrc` currently points to Node `22`.
 
-### Update your personal info
+## Content Source
 
-Edit [portfolio.json](/Users/Paul/Desktop/portfolio-v2/portfolio.json)
+Portfolio facts should come from `portfolio.json`.
 
-This includes:
+Use it for:
 
-- name
-- role
-- personal description
-- social links
-- skills
-- projects
-- experiences
-- metadata URL
+- Name, role, headline, description, status, location, and timezone
+- Social links
+- CTA links
+- Skills shown in the technology rail
+- Projects and experiences
+- Optional `resumeUrl` and `contactEmail`
+- Optional metadata URL
 
-### Change the hero section
+The schema and TypeScript type mirror live beside it:
 
-Edit [src/components/About.tsx](/Users/Paul/Desktop/portfolio-v2/src/components/About.tsx)
+- `portfolio.schema.json`
+- `src/types/portfolio.ts`
 
-Use this file for:
+When adding new data-driven fields, update all three together: JSON, schema, and TypeScript type.
 
-- hero headline
-- hero supporting text
-- CTA wording
-- hero layout
+## Page Structure
 
-### Change projects or experience section wording
+The homepage is assembled in `src/app/page.tsx`:
 
-Edit:
+- `src/components/About.tsx` - hero, at-a-glance facts, status/contact panel
+- `src/components/Projects.tsx` - selected work section
+- `src/components/Experiences.tsx` - experience section
+- `src/components/Contact.tsx` - inline contact form
 
-- [src/components/Projects.tsx](/Users/Paul/Desktop/portfolio-v2/src/components/Projects.tsx)
-- [src/components/Experiences.tsx](/Users/Paul/Desktop/portfolio-v2/src/components/Experiences.tsx)
+Empty projects or experiences render intentional empty states through `src/components/EmptyState.tsx`. Do not add mock projects, fake metrics, placeholder companies, or invented experience just to fill space.
 
-Use these files for:
+## UI Systems
 
-- section headings
-- intro text
-- empty-state messages
+- Theme tokens, layout rails, animation CSS, and component utility classes live in `src/app/globals.css`.
+- Theme initialization lives in `src/components/ThemeProvider.tsx`.
+- Theme switching lives in `src/components/ThemeToggle.tsx`.
+- Subtle React animations use Motion via `src/components/Motion.tsx`.
+- The technology rail uses Embla in `src/components/SkillMarquee.tsx`.
+- Brand icons use `react-icons` through `src/components/BrandIcon.tsx`.
+- Lucide icons are used for general UI symbols.
 
-### Change cards
+## Contact And Resume
 
-Edit:
+The contact form is inline, not a modal. It opens the visitor's local mail app only when `about.contactEmail` exists in `portfolio.json`.
 
-- [src/components/sub-components/ProjectCard.tsx](/Users/Paul/Desktop/portfolio-v2/src/components/sub-components/ProjectCard.tsx)
-- [src/components/sub-components/ExperienceCard.tsx](/Users/Paul/Desktop/portfolio-v2/src/components/sub-components/ExperienceCard.tsx)
+The `Download CV` control is disabled until `about.resumeUrl` exists. Do not point it at a fake file. If a resume PDF is added under `public/`, set `resumeUrl` to that public path.
 
-Use these files for:
+## Design References
 
-- how each project looks
-- how each experience looks
-- labels like `Source`, `Live Demo`, or fallback text
+Approved redesign mockups are committed for documentation:
 
-### Change navigation
+- `docs/design/portfolio-redesign-light.png`
+- `docs/design/portfolio-redesign-dark.png`
 
-Edit [src/components/Navbar.tsx](/Users/Paul/Desktop/portfolio-v2/src/components/Navbar.tsx)
+Use these as visual references when adjusting layout, spacing, or theme direction.
 
-Use this file for:
+## Common Edits
 
-- desktop nav
-- mobile menu
-- top-right CTA
-
-### Change colors, spacing, and theme
-
-Edit [src/app/globals.css](/Users/Paul/Desktop/portfolio-v2/src/app/globals.css)
-
-Use this file for:
-
-- colors
-- spacing
-- section padding
-- glass styles
-- light/dark theme variables
-
-## How The Data Works
-
-There are two important rules:
-
-### 1. `portfolio.json` is for portfolio data
-
-Put real content here, like:
-
-- your name
-- your projects
-- your work history
-
-### 2. Components are for UI wording
-
-Put interface text here, like:
-
-- section titles
-- button labels
-- empty-state messages
-
-This keeps the JSON focused on your actual information instead of general site copy.
-
-## How To Add A Project
-
-Add an object inside `projects` in [portfolio.json](/Users/Paul/Desktop/portfolio-v2/portfolio.json):
+Add a project in `portfolio.json`:
 
 ```json
 {
@@ -135,75 +88,36 @@ Add an object inside `projects` in [portfolio.json](/Users/Paul/Desktop/portfoli
   "dateOfDevelopment": {
     "from": "2024",
     "to": "Present"
+  },
+  "links": {
+    "github": "https://github.com/...",
+    "live": "https://example.com"
   }
 }
 ```
 
-Optional links:
-
-```json
-"links": {
-  "github": "https://github.com/...",
-  "live": "https://your-site.com"
-}
-```
-
-If you do not add links, the UI shows a fallback message instead of buttons.
-
-## How To Add An Experience
-
-Add an object inside `experiences` in [portfolio.json](/Users/Paul/Desktop/portfolio-v2/portfolio.json):
+Add an experience in `portfolio.json`:
 
 ```json
 {
-  "position": "Job Title",
+  "position": "Role Title",
   "companyName": "Company Name",
   "dateOfEmployment": {
     "from": "2024",
     "to": "Present"
   },
-  "description": "Short summary of the work"
+  "description": "Short summary of the work."
 }
 ```
 
-## Why The JSON Has Type Safety
+## Before Shipping
 
-Two files help keep `portfolio.json` safe:
+Run:
 
-- [portfolio.schema.json](/Users/Paul/Desktop/portfolio-v2/portfolio.schema.json)
-- [src/types/portfolio.ts](/Users/Paul/Desktop/portfolio-v2/src/types/portfolio.ts)
+```powershell
+npm.cmd run lint
+npm.cmd run typecheck
+npm.cmd run build
+```
 
-What they do:
-
-- show you what fields are required
-- help your editor give better hints
-- stop TypeScript from breaking when arrays are empty
-
-## Empty Sections
-
-It is okay for these arrays to be empty:
-
-- `projects`
-- `experiences`
-
-If they are empty, the page shows a proper empty-state message instead of a blank gap.
-
-## Files That Matter Most
-
-If you only remember six files, remember these:
-
-- [portfolio.json](/Users/Paul/Desktop/portfolio-v2/portfolio.json)
-- [src/app/page.tsx](/Users/Paul/Desktop/portfolio-v2/src/app/page.tsx)
-- [src/components/About.tsx](/Users/Paul/Desktop/portfolio-v2/src/components/About.tsx)
-- [src/components/Navbar.tsx](/Users/Paul/Desktop/portfolio-v2/src/components/Navbar.tsx)
-- [src/components/Projects.tsx](/Users/Paul/Desktop/portfolio-v2/src/components/Projects.tsx)
-- [src/app/globals.css](/Users/Paul/Desktop/portfolio-v2/src/app/globals.css)
-
-## Safe Workflow
-
-When you change content or UI:
-
-1. Edit the file you need
-2. Run `npm run lint`
-3. Run `npm run typecheck`
-4. Run `npm run build` before shipping
+Also verify the page in both light and dark mode, especially the hero, technology rail, contact form, and empty states.

@@ -19,8 +19,36 @@
         "role": {
           "type": "string"
         },
+        "headline": {
+          "type": "string"
+        },
         "personalDescription": {
           "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "resumeUrl": {
+          "type": "string"
+        },
+        "contactEmail": {
+          "type": "string",
+          "format": "email"
+        },
+        "ctaLinks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ctaLink"
+          }
+        },
+        "highlights": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/highlight"
+          }
         },
         "socialLinks": {
           "type": "object",
@@ -38,6 +66,9 @@
           }
         },
         "currentStatus": {
+          "type": "string"
+        },
+        "statusLabel": {
           "type": "string"
         }
       }
@@ -81,6 +112,35 @@
           "type": "string"
         },
         "to": {
+          "type": "string"
+        }
+      }
+    },
+    "ctaLink": {
+      "type": "object",
+      "required": ["label", "href"],
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "href": {
+          "type": "string"
+        }
+      }
+    },
+    "highlight": {
+      "type": "object",
+      "required": ["label", "value"],
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "description": {
           "type": "string"
         }
       }

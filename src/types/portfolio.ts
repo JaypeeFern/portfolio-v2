@@ -6,12 +6,31 @@ export interface PortfolioDateRange {
 export interface PortfolioAbout {
   name: string;
   role: string;
+  headline?: string;
   personalDescription: string;
+  location?: string;
+  timezone?: string;
+  resumeUrl?: string;
+  contactEmail?: string;
+  ctaLinks?: PortfolioCtaLink[];
+  highlights?: PortfolioHighlight[];
   socialLinks: {
     linkedin: string;
     github: string;
   };
   currentStatus: string;
+  statusLabel?: string;
+}
+
+export interface PortfolioCtaLink {
+  label: string;
+  href: string;
+}
+
+export interface PortfolioHighlight {
+  label: string;
+  value: string;
+  description?: string;
 }
 
 export interface PortfolioExperience {

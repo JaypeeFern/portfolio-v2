@@ -3,12 +3,23 @@
     "about": {
         "name": "John Paul Fernandez",
         "role": "Full Stack Developer",
+        "headline": "Fast, clear, dependable web products",
         "personalDescription": "I like building web products that feel fast, clear, and dependable. Most of my work lives at the intersection of React interfaces, Next.js apps, and backend systems that are simple to scale and maintain.",
+        "location": "Philippines",
+        "timezone": "UTC+8",
+        "ctaLinks": [
+            {
+                "label": "See my work",
+                "href": "#projects"
+            }
+        ],
         "socialLinks": {
             "linkedin": "https://www.linkedin.com/in/john-paul-fernandez-a11962262/",
             "github": "https://github.com/JaypeeFern"
         },
-        "currentStatus": "Open to new opportunities"
+        "currentStatus": "Open to new opportunities",
+        "statusLabel": "Available for work",
+        "contactEmail": "contact@jpfernandez.dev"
     },
     "experiences": [],
     "skills": [

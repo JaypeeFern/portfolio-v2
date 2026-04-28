@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import ThemeProvider from "@/components/ThemeProvider";
 import { portfolioData } from "@/lib/portfolio";
 
 const inter = localFont({
@@ -79,18 +79,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth dark" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} ${spaceGrotesk.variable} ${inter.className} antialiased min-h-screen bg-background text-foreground selection:bg-primary/20`}>
-        <Script id="theme-init" strategy="beforeInteractive">
-          {`(() => {
-            const storageKey = "portfolio-theme";
-            const savedTheme = localStorage.getItem(storageKey);
-            const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-            const theme = savedTheme ?? preferredTheme;
-            document.documentElement.classList.toggle("dark", theme === "dark");
-            document.documentElement.style.colorScheme = theme;
-          })();`}
-        </Script>
+        <ThemeProvider />
         <div className="app-background" />
         <Navbar />
         <main className="relative">
