@@ -130,7 +130,7 @@ export default function Home() {
   return (
     <div className="portfolio-page">
       <section id="about" className="cutaway-desktop" aria-label="Introduction and technical range">
-        <Image src="/plates/section-art.png" alt="" fill priority sizes="100vw" className="cutaway-art" />
+        <Image src="/plates/section-art.svg" alt="" fill priority sizes="100vw" className="cutaway-art" />
         <Image src="/plates/portrait.png" alt="Portrait of John Paul Fernandez" width={1024} height={1536} priority sizes="32vw" className="cutaway-portrait" />
         <PortfolioNav />
         <HeroContent />

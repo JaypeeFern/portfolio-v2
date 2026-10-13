@@ -1288,7 +1288,7 @@ textarea:focus-visible {
   .mobile-visual__art {
     position: absolute;
     inset: 0;
-    background-image: url("/plates/section-art.png");
+    background-image: url("/plates/section-art.svg");
     background-size: cover;
     background-position: center;
   }
