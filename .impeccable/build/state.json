@@ -1,0 +1,560 @@
+{
+  "tool": "build-phase",
+  "version": 2,
+  "startedAt": "2026-10-12T09:41:41.512Z",
+  "comp": ".impeccable/mocks/cutaway-variant-four.png",
+  "direction": "14cc5560",
+  "breakpoint": "1586x992",
+  "artifact": null,
+  "phase": "hero",
+  "phases": {
+    "comps": {
+      "status": "closed",
+      "openedAt": "2026-10-12T09:41:41.512Z",
+      "closedAt": "2026-10-12T10:05:49.551Z",
+      "attempts": 2,
+      "notes": [],
+      "gate": {
+        "ok": true,
+        "reasons": [],
+        "summary": "5 comps, 1 approved",
+        "approved": ".impeccable/mocks/cutaway-variant-four.png",
+        "at": "2026-10-12T10:05:49.551Z"
+      },
+      "forced": null
+    },
+    "spec": {
+      "status": "closed",
+      "openedAt": "2026-10-12T10:05:49.562Z",
+      "closedAt": "2026-10-12T10:11:41.158Z",
+      "attempts": 1,
+      "notes": [],
+      "gate": {
+        "ok": true,
+        "reasons": [],
+        "summary": "18 regions, 2 plates, 13 text regions measured",
+        "at": "2026-10-12T10:11:41.158Z"
+      },
+      "forced": null
+    },
+    "plates": {
+      "status": "closed",
+      "openedAt": "2026-10-12T10:11:41.158Z",
+      "closedAt": "2026-10-12T10:45:13.798Z",
+      "attempts": 3,
+      "notes": [],
+      "gate": {
+        "ok": true,
+        "reasons": [],
+        "summary": "2/2 plates",
+        "at": "2026-10-12T10:45:13.788Z"
+      },
+      "forced": null
+    },
+    "hero": {
+      "status": "open",
+      "openedAt": "2026-10-12T10:45:13.798Z",
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": {
+        "ok": false,
+        "reasons": [
+          "region brand-mark is missing (detail 10%, structure 62%): the comp shows material the build does not",
+          "region applications-heading is missing (detail 0%, structure 46%): the comp shows material the build does not",
+          "region positioning (text) is contradicted (structure 65%, detail added 20%): the composition of this text region differs from the comp; re-derive it from the spec box",
+          "region primary-action (control) is contradicted (structure 68%, detail added 4%): this control differs from the comp: inspect its lettering and visible shape separately against the crop and the measured readings; preserve the region's control classification",
+          "region interfaces-heading (text) is contradicted (structure 39%, detail added 22%): the composition of this text region differs from the comp; re-derive it from the spec box",
+          "region applications-skills (text) is contradicted (structure 35%, detail added 30%): the composition of this text region differs from the comp; re-derive it from the spec box",
+          "region backend-heading (text) is contradicted (structure 35%, detail added 22%): the composition of this text region differs from the comp; re-derive it from the spec box"
+        ],
+        "regionReasons": {
+          "brand-mark": [
+            "region brand-mark is missing (detail 10%, structure 62%): the comp shows material the build does not"
+          ],
+          "applications-heading": [
+            "region applications-heading is missing (detail 0%, structure 46%): the comp shows material the build does not"
+          ],
+          "positioning": [
+            "region positioning (text) is contradicted (structure 65%, detail added 20%): the composition of this text region differs from the comp; re-derive it from the spec box"
+          ],
+          "primary-action": [
+            "region primary-action (control) is contradicted (structure 68%, detail added 4%): this control differs from the comp: inspect its lettering and visible shape separately against the crop and the measured readings; preserve the region's control classification"
+          ],
+          "interfaces-heading": [
+            "region interfaces-heading (text) is contradicted (structure 39%, detail added 22%): the composition of this text region differs from the comp; re-derive it from the spec box"
+          ],
+          "applications-skills": [
+            "region applications-skills (text) is contradicted (structure 35%, detail added 30%): the composition of this text region differs from the comp; re-derive it from the spec box"
+          ],
+          "backend-heading": [
+            "region backend-heading (text) is contradicted (structure 35%, detail added 22%): the composition of this text region differs from the comp; re-derive it from the spec box"
+          ]
+        },
+        "summary": "hero 81% (match)",
+        "score": 0.8093,
+        "verdict": "match",
+        "report": ".impeccable/review/diff/hero/report.json",
+        "sideBySide": "C:/Users/Paul/Desktop/portfolio-v2/.impeccable/review/diff/hero/side-by-side.png",
+        "worst": [
+          "brand-mark missing 37%",
+          "applications-skills contradicted 40%",
+          "applications-heading missing 41%"
+        ],
+        "worstIds": [
+          "brand-mark",
+          "applications-skills",
+          "applications-heading"
+        ],
+        "worstCrops": [
+          {
+            "id": "brand-mark",
+            "verdict": "missing",
+            "score": {
+              "overall": 0.3734,
+              "structure": 0.618,
+              "color": 0.5324,
+              "colorIntersection": 0.3537,
+              "paletteMatch": 0.6286,
+              "detail": 0.0959,
+              "detailRaw": 0.1428,
+              "detailAdded": 0.0938,
+              "bands": 0
+            },
+            "file": ".impeccable/review/diff/hero/regions/brand-mark.png"
+          },
+          {
+            "id": "applications-skills",
+            "verdict": "contradicted",
+            "score": {
+              "overall": 0.3986,
+              "structure": 0.3529,
+              "color": 0.6455,
+              "colorIntersection": 0.4709,
+              "paletteMatch": 0.7395,
+              "detail": 0.0788,
+              "detailRaw": 0.2299,
+              "detailAdded": 0.3021,
+              "bands": 0.49
+            },
+            "file": ".impeccable/review/diff/hero/regions/applications-skills.png"
+          },
+          {
+            "id": "applications-heading",
+            "verdict": "missing",
+            "score": {
+              "overall": 0.4076,
+              "structure": 0.4583,
+              "color": 0.474,
+              "colorIntersection": 0.0946,
+              "paletteMatch": 0.6783,
+              "detail": 0,
+              "detailRaw": 0.087,
+              "detailAdded": 0.4479,
+              "bands": 0.6
+            },
+            "file": ".impeccable/review/diff/hero/regions/applications-heading.png"
+          }
+        ],
+        "advisories": [
+          "(advisory, above the 72% bar; fix in the polish pass before responsive) 8 readings:",
+          "  text positioning: letter-spacing is wider than the comp's (gap 0.160 vs 0.083 of the cap height); set letter-spacing to close it by about 1px",
+          "  text experience-proof: letter-spacing is wider than the comp's (gap 0.138 vs 0.072 of the cap height); set letter-spacing to close it by about 1px",
+          "  text primary-action: cap height 12.6px in the build, 17px in the comp (-26%); set font-size so the cap height renders at 17px",
+          "  text interfaces-skills: letter-spacing is wider than the comp's (gap 0.131 vs 0.051 of the cap height); set letter-spacing to close it by about 1px",
+          "  text backend-heading: cap height 21.1px in the build, 30.7px in the comp (-31%); set font-size so the cap height renders at 30.7px",
+          "  text backend-skills: cap height 9.4px in the build, 43.2px in the comp (-78%); set font-size so the cap height renders at 43.2px",
+          "  text projects-empty-state: cap height 12.3px in the build, 16.8px in the comp (-27%); set font-size so the cap height renders at 16.8px",
+          "  text capability-flow: 4 lines in the build, 2 in the comp; the measure (max-width, font-size, letter-spacing) wraps it differently, so the block is a different shape"
+        ],
+        "regionVerdicts": {
+          "section-art": "match",
+          "portrait": "drift",
+          "brand-mark": "missing",
+          "navigation": "drift",
+          "capability-flow": "drift",
+          "name": "drift",
+          "role": "drift",
+          "positioning": "contradicted",
+          "profile-copy": "drift",
+          "experience-proof": "drift",
+          "primary-action": "contradicted",
+          "interfaces-heading": "contradicted",
+          "interfaces-skills": "drift",
+          "applications-heading": "missing",
+          "applications-skills": "contradicted",
+          "backend-heading": "contradicted",
+          "backend-skills": "drift",
+          "projects-heading": "drift",
+          "projects-empty-state": "drift"
+        },
+        "at": "2026-10-12T11:21:14.908Z"
+      },
+      "forced": null,
+      "readingsSeen": {
+        "text capability-flow: cap height 53.5px in the build, 103.9px in the comp (-49%); set font-size so the cap height renders at 103.9px": 1,
+        "text positioning: letter-spacing is wider than the comp's (gap 0.142 vs 0.083 of the cap height); set letter-spacing to close it by about 1px": 1,
+        "text experience-proof: letter-spacing is wider than the comp's (gap 0.138 vs 0.072 of the cap height); set letter-spacing to close it by about 1px": 2,
+        "text primary-action: cap height 12.8px in the build, 17px in the comp (-25%); set font-size so the cap height renders at 17px": 1,
+        "text backend-heading: cap height 22.3px in the build, 30.7px in the comp (-27%); set font-size so the cap height renders at 30.7px": 1,
+        "text backend-skills: cap height 54.6px in the build, 43.2px in the comp (+26%); set font-size so the cap height renders at 43.2px": 1,
+        "text projects-empty-state: cap height 12.4px in the build, 16.8px in the comp (-26%); set font-size so the cap height renders at 16.8px": 1,
+        "text capability-flow: 5 lines in the build, 2 in the comp; the measure (max-width, font-size, letter-spacing) wraps it differently, so the block is a different shape": 1,
+        "text profile-copy: 3 lines in the build, 4 in the comp; the measure (max-width, font-size, letter-spacing) wraps it differently, so the block is a different shape": 2,
+        "text primary-action: ink is #f8f5f6 in the build, #b0caf2 in the comp; use the comp's colour": 1,
+        "text positioning: letter-spacing is wider than the comp's (gap 0.160 vs 0.083 of the cap height); set letter-spacing to close it by about 1px": 1,
+        "text primary-action: cap height 12.6px in the build, 17px in the comp (-26%); set font-size so the cap height renders at 17px": 1,
+        "text interfaces-skills: letter-spacing is wider than the comp's (gap 0.131 vs 0.051 of the cap height); set letter-spacing to close it by about 1px": 1,
+        "text backend-heading: cap height 21.1px in the build, 30.7px in the comp (-31%); set font-size so the cap height renders at 30.7px": 1,
+        "text backend-skills: cap height 9.4px in the build, 43.2px in the comp (-78%); set font-size so the cap height renders at 43.2px": 1,
+        "text projects-empty-state: cap height 12.3px in the build, 16.8px in the comp (-27%); set font-size so the cap height renders at 16.8px": 1,
+        "text capability-flow: 4 lines in the build, 2 in the comp; the measure (max-width, font-size, letter-spacing) wraps it differently, so the block is a different shape": 1,
+        "text interfaces-skills: the face renders 35% lighter than the comp's (ink density 0.64 vs 0.98); raise a weight step or use the ranked face": 1,
+        "text primary-action: ink is #f2f8f5 in the build, #b0caf2 in the comp; use the comp's colour": 1,
+        "text backend-skills: ink is #0949b8 in the build, #0a8b35 in the comp; use the comp's colour": 1,
+        "text projects-empty-state: ink is #29283a in the build, #828191 in the comp; use the comp's colour": 1
+      },
+      "records": 3
+    },
+    "sections": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "motion": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "responsive": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "review": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    }
+  },
+  "finish": null,
+  "decisionComp": ".impeccable/mocks/decision/assigned.png",
+  "sessionId": "01a12f55-3c86-7943-b517-8e013b0866b2",
+  "plates": {
+    "section-art": {
+      "id": "section-art",
+      "file": "assets/plates/section-art.png",
+      "status": "ok",
+      "assetHash": "a63bc1da3315b0353d5cd8fcb54f117cefcde9387c58214e96fe54cc711d333f",
+      "regionHash": "e1585180b4107004e2051c86658c9b4f1dc3e25e9fb5e8823ca85276b39996ff",
+      "referenceHash": "8a1a6e6a3154215cfedb60bdcd88daaef095830e7f104c264a9f0e723dbd71a5",
+      "reference": {
+        "policy": "plate-reference-v2",
+        "excludedPixels": 422357,
+        "totalPixels": 1573312,
+        "remainingPixels": 1150955,
+        "excludedFraction": 0.26845088577472237,
+        "fullyExcluded": false,
+        "regions": [
+          {
+            "id": "brand-mark",
+            "kind": "chrome",
+            "cropPx": {
+              "x": 43,
+              "y": 29,
+              "w": 54,
+              "h": 40
+            },
+            "pixels": 2160
+          },
+          {
+            "id": "navigation",
+            "kind": "chrome",
+            "cropPx": {
+              "x": 1100,
+              "y": 15,
+              "w": 430,
+              "h": 40
+            },
+            "pixels": 17200
+          },
+          {
+            "id": "name",
+            "kind": "text",
+            "cropPx": {
+              "x": 40,
+              "y": 137,
+              "w": 470,
+              "h": 163
+            },
+            "pixels": 76610
+          },
+          {
+            "id": "role",
+            "kind": "text",
+            "cropPx": {
+              "x": 43,
+              "y": 323,
+              "w": 390,
+              "h": 44
+            },
+            "pixels": 17160
+          },
+          {
+            "id": "positioning",
+            "kind": "text",
+            "cropPx": {
+              "x": 44,
+              "y": 378,
+              "w": 435,
+              "h": 48
+            },
+            "pixels": 20880
+          },
+          {
+            "id": "profile-copy",
+            "kind": "text",
+            "cropPx": {
+              "x": 49,
+              "y": 443,
+              "w": 410,
+              "h": 123
+            },
+            "pixels": 50430
+          },
+          {
+            "id": "experience-proof",
+            "kind": "text",
+            "cropPx": {
+              "x": 87,
+              "y": 602,
+              "w": 270,
+              "h": 32
+            },
+            "pixels": 8640
+          },
+          {
+            "id": "primary-action",
+            "kind": "control",
+            "cropPx": {
+              "x": 50,
+              "y": 673,
+              "w": 287,
+              "h": 68
+            },
+            "pixels": 19516
+          },
+          {
+            "id": "interfaces-heading",
+            "kind": "text",
+            "cropPx": {
+              "x": 865,
+              "y": 143,
+              "w": 195,
+              "h": 54
+            },
+            "pixels": 10530
+          },
+          {
+            "id": "interfaces-skills",
+            "kind": "text",
+            "cropPx": {
+              "x": 1088,
+              "y": 149,
+              "w": 264,
+              "h": 102
+            },
+            "pixels": 26928
+          },
+          {
+            "id": "applications-heading",
+            "kind": "text",
+            "cropPx": {
+              "x": 884,
+              "y": 330,
+              "w": 205,
+              "h": 54
+            },
+            "pixels": 11070
+          },
+          {
+            "id": "applications-skills",
+            "kind": "text",
+            "cropPx": {
+              "x": 1063,
+              "y": 336,
+              "w": 271,
+              "h": 104
+            },
+            "pixels": 28184
+          },
+          {
+            "id": "backend-heading",
+            "kind": "text",
+            "cropPx": {
+              "x": 897,
+              "y": 564,
+              "w": 163,
+              "h": 89
+            },
+            "pixels": 14507
+          },
+          {
+            "id": "backend-skills",
+            "kind": "text",
+            "cropPx": {
+              "x": 1068,
+              "y": 523,
+              "w": 386,
+              "h": 200
+            },
+            "pixels": 77200
+          },
+          {
+            "id": "projects-heading",
+            "kind": "text",
+            "cropPx": {
+              "x": 72,
+              "y": 846,
+              "w": 440,
+              "h": 64
+            },
+            "pixels": 28160
+          },
+          {
+            "id": "projects-empty-state",
+            "kind": "text",
+            "cropPx": {
+              "x": 1010,
+              "y": 877,
+              "w": 390,
+              "h": 37
+            },
+            "pixels": 14430
+          }
+        ],
+        "ignoredContainers": [
+          "capability-flow"
+        ]
+      },
+      "compHash": "376c02f010f87f22ef104ae255ab422c3dff3659aa32703341d2f87bdaaa9907",
+      "size": "1585x992",
+      "score": 0.8082
+    },
+    "portrait": {
+      "id": "portrait",
+      "file": "assets/plates/portrait.png",
+      "status": "ok",
+      "assetHash": "012cac69abe7f8c639ea8a3bdd883f4a459d4e43577c6c7911a4499e663c2e4d",
+      "regionHash": "c1d725365e7a5ca672f973bdbaa9fb168fde2ce896df433c463eccd1af730cb8",
+      "referenceHash": "8a1a6e6a3154215cfedb60bdcd88daaef095830e7f104c264a9f0e723dbd71a5",
+      "reference": {
+        "policy": "plate-reference-v2",
+        "excludedPixels": 32547,
+        "totalPixels": 367500,
+        "remainingPixels": 334953,
+        "excludedFraction": 0.08856326530612245,
+        "fullyExcluded": false,
+        "regions": [
+          {
+            "id": "name",
+            "kind": "text",
+            "cropPx": {
+              "x": 0,
+              "y": 47,
+              "w": 105,
+              "h": 163
+            },
+            "pixels": 17115
+          },
+          {
+            "id": "role",
+            "kind": "text",
+            "cropPx": {
+              "x": 0,
+              "y": 233,
+              "w": 28,
+              "h": 44
+            },
+            "pixels": 1232
+          },
+          {
+            "id": "positioning",
+            "kind": "text",
+            "cropPx": {
+              "x": 0,
+              "y": 288,
+              "w": 74,
+              "h": 48
+            },
+            "pixels": 3552
+          },
+          {
+            "id": "profile-copy",
+            "kind": "text",
+            "cropPx": {
+              "x": 0,
+              "y": 353,
+              "w": 54,
+              "h": 123
+            },
+            "pixels": 6642
+          },
+          {
+            "id": "interfaces-heading",
+            "kind": "text",
+            "cropPx": {
+              "x": 460,
+              "y": 53,
+              "w": 40,
+              "h": 54
+            },
+            "pixels": 2160
+          },
+          {
+            "id": "applications-heading",
+            "kind": "text",
+            "cropPx": {
+              "x": 479,
+              "y": 240,
+              "w": 21,
+              "h": 54
+            },
+            "pixels": 1134
+          },
+          {
+            "id": "backend-heading",
+            "kind": "text",
+            "cropPx": {
+              "x": 492,
+              "y": 474,
+              "w": 8,
+              "h": 89
+            },
+            "pixels": 712
+          }
+        ],
+        "ignoredContainers": []
+      },
+      "compHash": "376c02f010f87f22ef104ae255ab422c3dff3659aa32703341d2f87bdaaa9907",
+      "size": "1024x1536",
+      "score": 0.4134
+    }
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "regions": [
+    {
+      "note": "Full-page layered cutaway illustration: chalk ground, three dimensional skill planes, projecting lower section, and fine construction lines. This is the background plate only; implementation overlays semantic copy, technology labels and portrait.",
+      "id": "section-art",
+      "kind": "plate",
+      "pixelBox": {
+        "w": 1586,
+        "y": 0,
+        "x": 0,
+        "h": 992
+      }
+    },
+    {
+      "note": "Photographic portrait cut out over the section artwork, from the supplied real portrait.",
+      "id": "portrait",
+      "kind": "image",
+      "pixelBox": {
+        "w": 500,
+        "y": 90,
+        "h": 735,
+        "x": 405
+      }
+    },
+    {
+      "note": "Small two-part cobalt and coral portfolio mark at the upper-left.",
+      "id": "brand-mark",
+      "kind": "chrome",
+      "pixelBox": {
+        "w": 54,
+        "y": 29,
+        "x": 43,
+        "h": 40
+      }
+    },
+    {
+      "note": "Right-aligned About, Work, Experience, Contact navigation.",
+      "id": "navigation",
+      "kind": "chrome",
+      "pixelBox": {
+        "w": 430,
+        "y": 15,
+        "x": 1100,
+        "h": 40
+      }
+    },
+    {
+      "note": "Code-owned semantic wrapper for the three source-driven technology groups on the cutaway. Labels wrap as each group grows. When content outgrows a plane's fixed artwork, continue that group's list below the cutaway in normal document flow; the page scrolls naturally. Never clip skills or add nested scrolling.",
+      "id": "capability-flow",
+      "kind": "text",
+      "pixelBox": {
+        "w": 497,
+        "y": 112,
+        "x": 1045,
+        "h": 653
+      },
+      "container": true,
+      "codeDrawn": true
+    },
+    {
+      "note": "Two-line high-impact display name John Paul Fernandez in the left profile field.",
+      "id": "name",
+      "kind": "text",
+      "pixelBox": {
+        "w": 470,
+        "y": 137,
+        "x": 40,
+        "h": 163
+      }
+    },
+    {
+      "note": "Full Stack Developer role immediately below the name.",
+      "id": "role",
+      "kind": "text",
+      "pixelBox": {
+        "w": 390,
+        "y": 323,
+        "x": 43,
+        "h": 44
+      }
+    },
+    {
+      "note": "Short profile headline Fast, clear, dependable web products.",
+      "id": "positioning",
+      "kind": "text",
+      "pixelBox": {
+        "w": 435,
+        "y": 378,
+        "x": 44,
+        "h": 48
+      }
+    },
+    {
+      "note": "Compact profile paragraph below the headline.",
+      "id": "profile-copy",
+      "kind": "text",
+      "pixelBox": {
+        "w": 410,
+        "y": 443,
+        "x": 49,
+        "h": 123
+      }
+    },
+    {
+      "note": "3+ years building web products, the only current experience claim.",
+      "id": "experience-proof",
+      "kind": "text",
+      "pixelBox": {
+        "w": 270,
+        "y": 602,
+        "x": 87,
+        "h": 32
+      }
+    },
+    {
+      "note": "Single prominent See my work call to action.",
+      "id": "primary-action",
+      "kind": "control",
+      "pixelBox": {
+        "w": 287,
+        "y": 673,
+        "x": 50,
+        "h": 68
+      }
+    },
+    {
+      "note": "Interfaces capability group title.",
+      "id": "interfaces-heading",
+      "kind": "text",
+      "parentId": "capability-flow",
+      "pixelBox": {
+        "w": 195,
+        "y": 143,
+        "x": 865,
+        "h": 54
+      }
+    },
+    {
+      "note": "React and Tailwind CSS skill labels with their brand icons. Technology labels wrap as the list grows; this group expands in normal page flow, with no nested scrolling or clipped skills.",
+      "id": "interfaces-skills",
+      "kind": "text",
+      "parentId": "capability-flow",
+      "pixelBox": {
+        "w": 264,
+        "y": 149,
+        "x": 1088,
+        "h": 102
+      }
+    },
+    {
+      "note": "Applications capability group title.",
+      "id": "applications-heading",
+      "kind": "text",
+      "parentId": "capability-flow",
+      "pixelBox": {
+        "w": 205,
+        "y": 330,
+        "x": 884,
+        "h": 54
+      }
+    },
+    {
+      "note": "Next.js and TypeScript skill labels with their brand icons. Technology labels wrap as the list grows; this group expands in normal page flow, with no nested scrolling or clipped skills.",
+      "id": "applications-skills",
+      "kind": "text",
+      "parentId": "capability-flow",
+      "pixelBox": {
+        "w": 271,
+        "y": 336,
+        "x": 1063,
+        "h": 104
+      }
+    },
+    {
+      "note": "Backend systems capability group title, broken over two lines.",
+      "id": "backend-heading",
+      "kind": "text",
+      "parentId": "capability-flow",
+      "pixelBox": {
+        "w": 163,
+        "y": 564,
+        "x": 897,
+        "h": 89
+      }
+    },
+    {
+      "note": "Node.js, NestJS, PostgreSQL, MongoDB, Docker, Git, Firebase, and Nginx labels with their brand icons. Technology labels wrap as the list grows; this group expands in normal page flow, with no nested scrolling or clipped skills.",
+      "id": "backend-skills",
+      "kind": "text",
+      "parentId": "capability-flow",
+      "pixelBox": {
+        "h": 200,
+        "y": 523,
+        "x": 1068,
+        "w": 386
+      }
+    },
+    {
+      "note": "Selected projects section heading at the start of the lower chalk plane.",
+      "id": "projects-heading",
+      "kind": "text",
+      "pixelBox": {
+        "h": 64,
+        "y": 846,
+        "x": 72,
+        "w": 440
+      }
+    },
+    {
+      "note": "Honest status that project writeups are not published yet.",
+      "id": "projects-empty-state",
+      "kind": "text",
+      "pixelBox": {
+        "h": 37,
+        "y": 877,
+        "x": 1010,
+        "w": 390
+      }
+    }
+  ]
+}

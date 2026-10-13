@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 3,
+  "stage": "components",
+  "id": "components",
+  "title": "Plan and asset review",
+  "comp": {
+    "path": ".impeccable/mocks/cutaway-variant-four.png",
+    "width": 1586,
+    "height": 992
+  },
+  "specSha256": "38c0aa01ee19f686823e223facc1a6b627878d233972d8f0712fe01368c49ab3",
+  "components": [
+    {
+      "id": "capability-flow",
+      "name": "Capability flow",
+      "kind": "text",
+      "role": "plan",
+      "box": {
+        "x": 0.6589,
+        "y": 0.1129,
+        "w": 0.3134,
+        "h": 0.6583
+      },
+      "note": "Code-owned semantic wrapper for the three source-driven technology groups on the cutaway. Labels wrap as each group grows. When content outgrows a plane's fixed artwork, continue that group's list below the cutaway in normal document flow; the page scrolls naturally. Never clip skills or add nested scrolling.",
+      "medium": "code",
+      "preview": {
+        "kind": "comp-crop"
+      },
+      "codeDrawn": true,
+      "dependencies": []
+    },
+    {
+      "id": "section-art",
+      "name": "Section art",
+      "kind": "plate",
+      "role": "asset",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "note": "Full-page layered cutaway illustration: chalk ground, three dimensional skill planes, projecting lower section, and fine construction lines. This is the background plate only; implementation overlays semantic copy, technology labels and portrait.",
+      "medium": "raster",
+      "preview": {
+        "kind": "image",
+        "path": "assets/plates/section-art.png"
+      },
+      "dependencies": []
+    },
+    {
+      "id": "portrait",
+      "name": "Portrait",
+      "kind": "image",
+      "role": "asset",
+      "box": {
+        "x": 0.2554,
+        "y": 0.0907,
+        "w": 0.3153,
+        "h": 0.7409
+      },
+      "note": "Photographic portrait cut out over the section artwork, from the supplied real portrait.",
+      "medium": "raster",
+      "preview": {
+        "kind": "image",
+        "path": "assets/plates/portrait.png"
+      },
+      "dependencies": []
+    }
+  ],
+  "codeRegions": [
+    {
+      "id": "brand-mark",
+      "name": "Brand mark",
+      "kind": "chrome",
+      "box": {
+        "x": 0.0271,
+        "y": 0.0292,
+        "w": 0.034,
+        "h": 0.0403
+      },
+      "note": "Small two-part cobalt and coral portfolio mark at the upper-left."
+    },
+    {
+      "id": "navigation",
+      "name": "Navigation",
+      "kind": "chrome",
+      "box": {
+        "x": 0.6936,
+        "y": 0.0151,
+        "w": 0.2711,
+        "h": 0.0403
+      },
+      "note": "Right-aligned About, Work, Experience, Contact navigation."
+    },
+    {
+      "id": "name",
+      "name": "Name",
+      "kind": "text",
+      "box": {
+        "x": 0.0252,
+        "y": 0.1381,
+        "w": 0.2963,
+        "h": 0.1643
+      },
+      "note": "Two-line high-impact display name John Paul Fernandez in the left profile field."
+    },
+    {
+      "id": "role",
+      "name": "Role",
+      "kind": "text",
+      "box": {
+        "x": 0.0271,
+        "y": 0.3256,
+        "w": 0.2459,
+        "h": 0.0444
+      },
+      "note": "Full Stack Developer role immediately below the name."
+    },
+    {
+      "id": "positioning",
+      "name": "Positioning",
+      "kind": "text",
+      "box": {
+        "x": 0.0277,
+        "y": 0.381,
+        "w": 0.2743,
+        "h": 0.0484
+      },
+      "note": "Short profile headline Fast, clear, dependable web products."
+    },
+    {
+      "id": "profile-copy",
+      "name": "Profile copy",
+      "kind": "text",
+      "box": {
+        "x": 0.0309,
+        "y": 0.4466,
+        "w": 0.2585,
+        "h": 0.124
+      },
+      "note": "Compact profile paragraph below the headline."
+    },
+    {
+      "id": "experience-proof",
+      "name": "Experience proof",
+      "kind": "text",
+      "box": {
+        "x": 0.0549,
+        "y": 0.6069,
+        "w": 0.1702,
+        "h": 0.0323
+      },
+      "note": "3+ years building web products, the only current experience claim."
+    },
+    {
+      "id": "primary-action",
+      "name": "Primary action",
+      "kind": "control",
+      "box": {
+        "x": 0.0315,
+        "y": 0.6784,
+        "w": 0.181,
+        "h": 0.0685
+      },
+      "note": "Single prominent See my work call to action."
+    },
+    {
+      "id": "interfaces-heading",
+      "name": "Interfaces heading",
+      "kind": "text",
+      "box": {
+        "x": 0.5454,
+        "y": 0.1442,
+        "w": 0.123,
+        "h": 0.0544
+      },
+      "note": "Interfaces capability group title."
+    },
+    {
+      "id": "interfaces-skills",
+      "name": "Interfaces skills",
+      "kind": "text",
+      "box": {
+        "x": 0.686,
+        "y": 0.1502,
+        "w": 0.1665,
+        "h": 0.1028
+      },
+      "note": "React and Tailwind CSS skill labels with their brand icons. Technology labels wrap as the list grows; this group expands in normal page flow, with no nested scrolling or clipped skills."
+    },
+    {
+      "id": "applications-heading",
+      "name": "Applications heading",
+      "kind": "text",
+      "box": {
+        "x": 0.5574,
+        "y": 0.3327,
+        "w": 0.1293,
+        "h": 0.0544
+      },
+      "note": "Applications capability group title."
+    },
+    {
+      "id": "applications-skills",
+      "name": "Applications skills",
+      "kind": "text",
+      "box": {
+        "x": 0.6702,
+        "y": 0.3387,
+        "w": 0.1709,
+        "h": 0.1048
+      },
+      "note": "Next.js and TypeScript skill labels with their brand icons. Technology labels wrap as the list grows; this group expands in normal page flow, with no nested scrolling or clipped skills."
+    },
+    {
+      "id": "backend-heading",
+      "name": "Backend heading",
+      "kind": "text",
+      "box": {
+        "x": 0.5656,
+        "y": 0.5685,
+        "w": 0.1028,
+        "h": 0.0897
+      },
+      "note": "Backend systems capability group title, broken over two lines."
+    },
+    {
+      "id": "backend-skills",
+      "name": "Backend skills",
+      "kind": "text",
+      "box": {
+        "x": 0.6734,
+        "y": 0.5272,
+        "w": 0.2434,
+        "h": 0.2016
+      },
+      "note": "Node.js, NestJS, PostgreSQL, MongoDB, Docker, Git, Firebase, and Nginx labels with their brand icons. Technology labels wrap as the list grows; this group expands in normal page flow, with no nested scrolling or clipped skills."
+    },
+    {
+      "id": "projects-heading",
+      "name": "Projects heading",
+      "kind": "text",
+      "box": {
+        "x": 0.0454,
+        "y": 0.8528,
+        "w": 0.2774,
+        "h": 0.0645
+      },
+      "note": "Selected projects section heading at the start of the lower chalk plane."
+    },
+    {
+      "id": "projects-empty-state",
+      "name": "Projects empty state",
+      "kind": "text",
+      "box": {
+        "x": 0.6368,
+        "y": 0.8841,
+        "w": 0.2459,
+        "h": 0.0373
+      },
+      "note": "Honest status that project writeups are not published yet."
+    }
+  ]
+}

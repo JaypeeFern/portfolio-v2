@@ -1,0 +1,230 @@
+{
+  "title": "Choose the visual world",
+  "question": "Which direction should guide the portfolio redesign? Choose a card, ask for a fresh hand, or take the category standard.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "The Cutaway Folio",
+      "kicker": "THE ROLL",
+      "lineage": "Architectural sectional drawings and exploded studies",
+      "thesis": "A vivid section drawing makes your profile, technical range, and product-building approach read as one connected practice.",
+      "palette": [
+        "#243EE8",
+        "#F25C3A",
+        "#E7ED54",
+        "#F4F1E8",
+        "#171923"
+      ],
+      "materials": [
+        "layered drafting film",
+        "cut-color planes",
+        "precise ink lines"
+      ],
+      "viewport": "One connected cutaway composition integrates your portrait, name, role, exact current profile copy, and verified technologies; labeled interface, application, and backend planes lead into the real work section below.",
+      "risk": "Without published case studies, the diagram can explain your range but cannot prove shipped outcomes.",
+      "raised": [
+        {
+          "from": "medium-native-ebru-floated-pigment",
+          "raise": "Layer focus has a visible purpose: selecting a verified skill group brings its real labels forward and lets the others recede."
+        },
+        {
+          "from": "operate-a-cutting-bench-select-rail",
+          "raise": "A simple, readable section index keeps the visitor oriented as the visual field changes."
+        },
+        {
+          "from": "clay-ceramics-fracture-glaze-river-shelf",
+          "raise": "Every interaction has a clear labeled state; color supports the state but never carries it alone."
+        },
+        {
+          "from": "pop-culture-shelf-gyaru-magazine-density",
+          "raise": "One oversized callout at a time points to a real profile fact or current technology, with deliberate negative space around it."
+        },
+        {
+          "from": "rw-copy-shop-zine-interior",
+          "raise": "One typographic scale shift gives the profile a decisive focal moment while all supporting copy stays comfortably readable."
+        }
+      ],
+      "comp": "C:\\Users\\Paul\\Desktop\\portfolio-v2\\.impeccable\\mocks\\decision\\assigned.png"
+    },
+    {
+      "id": "model-pick",
+      "label": "The Engineering Journal",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "Independent engineering journals and printed technical indexes",
+      "thesis": "A current issue of your working practice: direct, exact, and energized by the details.",
+      "palette": [
+        "#153C42",
+        "#F06B42",
+        "#F4E8C9",
+        "#151719"
+      ],
+      "materials": [
+        "ink-heavy print",
+        "registration marks",
+        "dense index rules"
+      ],
+      "viewport": "The opening spread gives your name and role a strong editorial lead, with the current profile, exact skill inventory, and a compact process index arranged as one authored page.",
+      "risk": "Editorial portfolios are familiar in this category, so the page needs an unusually strong focal composition to feel personal.",
+      "comp": "C:\\Users\\Paul\\Desktop\\portfolio-v2\\.impeccable\\mocks\\decision\\model-pick.png"
+    },
+    {
+      "id": "challenger-miura",
+      "label": "The Unfolding Systems Sheet",
+      "verdict": "competitive",
+      "lineage": "Miura-fold deployable sheets",
+      "thesis": "Your real skills and approach unfold from one precise sheet instead of being split into generic cards.",
+      "palette": [
+        "#F7F5EF",
+        "#D4AF37",
+        "#A6A6A0",
+        "#CFE4F7",
+        "#0E0E0E"
+      ],
+      "materials": [
+        "matte stock",
+        "scored creases",
+        "foil-like section marks"
+      ],
+      "viewport": "A single unfolding sheet introduces your profile and opens into clearly labeled technology groups; the beginning of Selected work sits on the next fold.",
+      "case": "Strong audience fit for engineering-minded visitors and a memorable systems metaphor; loses to the cutaway on plain-language product clarity.",
+      "risk": "If the fold mechanics lead too strongly, visitors may remember the motion before your actual work and skills.",
+      "comp": "C:\\Users\\Paul\\Desktop\\portfolio-v2\\.impeccable\\mocks\\decision\\challenger-miura.png",
+      "hero": "https://impeccable.style/worlds/cards/paper-folds-pleats-deployable-miura-orbit-sheet-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/paper-folds-pleats-deployable-miura-orbit-sheet.webp"
+    },
+    {
+      "id": "challenger-ebru",
+      "label": "Floated Pigment",
+      "verdict": "declined",
+      "lineage": "Ebru marbling",
+      "thesis": "The content becomes a one-off fluid drawing.",
+      "palette": [
+        "pigment colors",
+        "sized paper"
+      ],
+      "materials": [
+        "floating pigment",
+        "combed water",
+        "paper transfer"
+      ],
+      "viewport": "A profile and skill labels set inside a changing pigment field.",
+      "case": "The art process outshines the professional profile and gives the visitor little help reading the technology range.",
+      "kept": "Each interaction should visibly change a real content layer.",
+      "risk": "Fluid marks can hide text and turn the portfolio into an art demo."
+    },
+    {
+      "id": "challenger-film",
+      "label": "The Cutting Bench",
+      "verdict": "declined",
+      "lineage": "Film-editing work prints",
+      "thesis": "The portfolio reads as a rail of film frames.",
+      "palette": [
+        "true black",
+        "flag orange",
+        "white frame windows"
+      ],
+      "materials": [
+        "film grain",
+        "punch windows",
+        "folded tape"
+      ],
+      "viewport": "Profile and skills appear as frames across a single scrub rail.",
+      "case": "The editing tool is an imposed metaphor, and there is no verified footage or case-study sequence to carry its structure.",
+      "kept": "Keep the visitor oriented with a stable index as the story moves.",
+      "risk": "Scrubbing may make a straightforward portfolio harder to navigate."
+    },
+    {
+      "id": "challenger-clay",
+      "label": "The Kiln Shelf",
+      "verdict": "declined",
+      "lineage": "Glaze tests on a ceramic kiln shelf",
+      "thesis": "The page tracks color as it flows and hardens.",
+      "palette": [
+        "chalk white",
+        "cobalt glaze",
+        "graphite"
+      ],
+      "materials": [
+        "ceramic glaze",
+        "kiln shelf",
+        "recipe cards"
+      ],
+      "viewport": "Profile facts sit beside a row of vivid glaze samples.",
+      "case": "Ceramic test states do not connect to the real content, while sample recipes suggest unprovided process evidence.",
+      "kept": "Interaction states should remain distinct and easy to read.",
+      "risk": "The metaphor could imply projects and experiments that are not in the source data."
+    },
+    {
+      "id": "challenger-gyaru",
+      "label": "Gyaru Magazine Spread",
+      "verdict": "declined",
+      "lineage": "Japanese street-fashion magazines",
+      "thesis": "Profile and technology names crowd together in an expressive spread.",
+      "palette": [
+        "hot pink",
+        "gold",
+        "white"
+      ],
+      "materials": [
+        "overprinted type",
+        "leader-line callouts",
+        "cutout figures"
+      ],
+      "viewport": "Your portrait anchors a densely annotated profile page.",
+      "case": "The visual language points to fashion and consumer pricing rather than software product work, and the density competes with the facts.",
+      "kept": "A precise, oversized callout can give one real fact a memorable moment.",
+      "risk": "Overlapping elements may make the page look noisy instead of deliberately expressive."
+    },
+    {
+      "id": "challenger-zine",
+      "label": "Copy-Shop Zine",
+      "verdict": "declined",
+      "lineage": "Photocopied zine interiors",
+      "thesis": "A single column of argument takes over the page.",
+      "palette": [
+        "goldenrod stock",
+        "black ink",
+        "one changing paper color per sheet"
+      ],
+      "materials": [
+        "copy-shop paper",
+        "typewriter lettering",
+        "overprint"
+      ],
+      "viewport": "A large typographic profile introduces an annotated technical index below.",
+      "case": "The voice and copy-shop texture make this feel like a personal manifesto instead of an experienced product developer's portfolio.",
+      "kept": "One carefully placed typography shift can carry energy without shrinking reading size.",
+      "risk": "The zine language may read as intentionally rough when the goal is confident craft."
+    }
+  ],
+  "reroll": {
+    "registers": [
+      "safer",
+      "bolder"
+    ]
+  },
+  "steer": true,
+  "buildPath": {
+    "value": "comp",
+    "toggle": true
+  },
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A polished, expected developer portfolio with a clear profile, work index, and contact path.",
+    "palette": [
+      "#FFFFFF",
+      "#111827",
+      "#2563EB",
+      "#E5E7EB"
+    ],
+    "materials": [
+      "clean grid",
+      "restrained borders",
+      "real portrait photography"
+    ],
+    "viewport": "A conventional profile header, verified stack labels, clear project and experience empty states, and a direct contact action in the first screen.",
+    "risk": "It will be immediately legible but familiar beside other developer portfolios.",
+    "comp": "C:\\Users\\Paul\\Desktop\\portfolio-v2\\.impeccable\\mocks\\decision\\canon.png"
+  }
+}

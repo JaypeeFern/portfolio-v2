@@ -48,17 +48,17 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="section-container section-block">
+        <section id="contact" className="folio-section contact-section-wrap">
             <MotionReveal>
-                <div className="contact-section">
-                    <div className="max-w-md space-y-3">
-                        <p className="section-label">Contact</p>
-                        <h2 className="font-display text-3xl font-semibold leading-tight tracking-normal text-foreground sm:text-4xl">
-                            Start a conversation
-                        </h2>
-                        <p className="text-base leading-7 text-muted-foreground">
-                            Send a short note with what you are building, what you need, and where I can help.
-                        </p>
+                <div className="contact-layout">
+                    <div className="contact-intro">
+                        <h2>Tell me what you’re building.</h2>
+                        <p>A few lines about the product and where you need help is enough.</p>
+                        {portfolioData.about.contactEmail && (
+                            <a className="contact-email" href={`mailto:${portfolioData.about.contactEmail}`}>
+                                {portfolioData.about.contactEmail}
+                            </a>
+                        )}
                     </div>
 
                     <form className="contact-form" onSubmit={handleSubmit}>
@@ -84,7 +84,7 @@ export default function Contact() {
                         {submitStatus === 'success' && (
                             <div className="flex items-center gap-2 text-sm text-green-600 dark:text-green-500 bg-green-50 dark:bg-green-500/10 p-3 rounded-md">
                                 <CheckCircle2 className="h-4 w-4" />
-                                <p>Message sent successfully! I&apos;ll get back to you soon.</p>
+                                <p>Sent. I’ll get back to you soon.</p>
                             </div>
                         )}
 
@@ -110,7 +110,7 @@ export default function Contact() {
 
                         <div className="flex flex-wrap items-center gap-3 pt-2">
                             <button type="submit" className="button-primary" disabled={isSubmitting}>
-                                {isSubmitting ? 'Sending...' : 'Send message'}
+                                {isSubmitting ? 'Sending...' : 'Send note'}
                                 {!isSubmitting && <ArrowRight className="h-4 w-4" strokeWidth={1.8} />}
                             </button>
                         </div>
