@@ -6,11 +6,11 @@ import Experience from "@/components/Experiences";
 import { portfolioData } from "@/lib/portfolio";
 
 const skillGroups = [
-  { id: "interfaces", title: "Interfaces", skills: ["React", "Tailwind CSS"], capacity: 4 },
-  { id: "applications", title: "Applications", skills: ["Next.js", "TypeScript"], capacity: 4 },
+  { id: "interfaces", title: "Frontend", skills: ["React", "Tailwind CSS"], capacity: 4 },
+  { id: "applications", title: "Framework & language", skills: ["Next.js", "TypeScript"], capacity: 4 },
   {
     id: "backend",
-    title: "Backend systems",
+    title: "Backend & tooling",
     skills: ["Node.js", "NestJS", "PostgreSQL", "MongoDB", "Docker", "Git", "Firebase", "Nginx"],
     capacity: 8,
   },

@@ -681,7 +681,7 @@ textarea:focus-visible {
   --r-applications-skills-y: 33.87%;
   --r-applications-skills-w: 17.09%;
   --r-applications-skills-h: 10.48%;
-  --r-backend-heading-x: 56.56%;
+  --r-backend-heading-x: 56.1%;
   --r-backend-heading-y: 56.85%;
   --r-backend-heading-w: 10.28%;
   --r-backend-heading-h: 8.97%;
@@ -934,15 +934,18 @@ textarea:focus-visible {
 }
 
 .cutaway-desktop .skill-cluster__plane--interfaces .skill-cluster__title {
-  left: 0.3%;
+  left: 3%;
   top: 14%;
   transform: rotateZ(6deg);
 }
 
 .cutaway-desktop .skill-cluster__plane--applications .skill-cluster__title {
-  left: 3%;
-  top: 28%;
-  transform: rotateZ(4.8deg);
+  left: 0%;
+  top: 16%;
+  width: 53%;
+  font-size: max(1.75rem, 2.3cqw);
+  text-align: center;
+  transform: rotateZ(1.3deg);
 }
 
 .cutaway-desktop .skill-cluster__plane--interfaces .skill-list,
@@ -1020,7 +1023,11 @@ textarea:focus-visible {
 .cutaway-desktop .skill-list--interfaces,
 .cutaway-desktop .skill-list--backend,
 .cutaway-desktop .skill-list--applications {
-  --skill-mount-shadow: rgb(0 0 0 / 34%);
+  --skill-wall-ink: #fffdf6;
+}
+
+.cutaway-desktop .skill-list--applications {
+  --skill-wall-ink: #171923;
 }
 
 .skill-list--interfaces .skill-item,
@@ -1054,16 +1061,22 @@ textarea:focus-visible {
 }
 
 .cutaway-desktop .skill-item {
-  border: 1px solid rgb(27 32 43 / 12%);
-  border-right-width: max(1px, 0.13cqw);
-  border-bottom-width: max(1px, 0.13cqw);
-  border-right-color: var(--skill-mount-edge, rgb(27 32 43 / 18%));
-  border-bottom-color: var(--skill-mount-edge, rgb(27 32 43 / 18%));
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 70%),
-    0 1px 2px rgb(0 0 0 / 12%),
-    0.12cqw 0.18cqw 0.24cqw var(--skill-mount-shadow, rgb(8 18 39 / 24%));
+  min-height: 0;
+  gap: 0.38cqw;
+  padding: 0.35cqw 0.2cqw;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--skill-wall-ink, #fffdf6);
+  font-size: max(0.8rem, 1cqw);
+  font-weight: 700;
+  letter-spacing: -0.015em;
   backface-visibility: hidden;
+}
+
+.cutaway-desktop .skill-item__icon {
+  color: currentColor;
 }
 
 .skill-item__icon {
