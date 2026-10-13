@@ -672,7 +672,7 @@ textarea:focus-visible {
   --r-interfaces-skills-x: 68.6%;
   --r-interfaces-skills-y: 15.02%;
   --r-interfaces-skills-w: 16.65%;
-  --r-interfaces-skills-h: 10.28%;
+  --r-interfaces-skills-h: 18.2%;
   --r-applications-heading-x: 55.74%;
   --r-applications-heading-y: 33.27%;
   --r-applications-heading-w: 12.93%;
@@ -680,7 +680,7 @@ textarea:focus-visible {
   --r-applications-skills-x: 67.02%;
   --r-applications-skills-y: 42.87%;
   --r-applications-skills-w: 17.09%;
-  --r-applications-skills-h: 10.48%;
+  --r-applications-skills-h: 18.2%;
   --r-backend-heading-x: 56.1%;
   --r-backend-heading-y: 56.85%;
   --r-backend-heading-w: 10.28%;
@@ -956,8 +956,21 @@ textarea:focus-visible {
 .cutaway-desktop .skill-cluster__plane--interfaces .skill-list {
   left: 62%;
   width: 54%;
-    top: calc(18% - 1.2cqw);
+  top: calc(18% - 1.2cqw);
   gap: 0.45cqw;
+}
+
+.cutaway-desktop .skill-cluster__plane--interfaces .skill-list--three {
+  left: 48%;
+  top: calc(18% - 2.2cqw);
+  width: 70%;
+  flex-wrap: nowrap;
+  gap: 0.25cqw;
+}
+
+.cutaway-desktop .skill-list--interfaces.skill-list--three .skill-item {
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 .cutaway-desktop .skill-cluster__plane--applications .skill-list {
@@ -967,9 +980,10 @@ textarea:focus-visible {
 .cutaway-desktop .skill-cluster__plane--applications .skill-list {
   left: 55%;
   width: 54%;
-  top: calc(13% - 0.8cqw);
+  top: 0;
+  align-content: center;
   transform: rotateZ(-6deg);
-  transform-origin: 100% 0%;
+  transform-origin: center;
 }
 
 .skill-list {
@@ -1002,7 +1016,7 @@ textarea:focus-visible {
 }
 
 .cutaway-desktop .skill-list--interfaces {
-  transform: perspective(46cqw) rotateY(-9deg) rotateX(1deg) skewY(-5deg) rotateZ(-4deg);
+  transform: perspective(46cqw) rotateY(-9deg) rotateX(1deg) skewY(-6deg) rotateZ(-4deg);
   transform-origin: 100% 0%;
 }
 
@@ -1018,6 +1032,62 @@ textarea:focus-visible {
   top: var(--r-backend-skills-y);
   width: var(--r-backend-skills-w);
   min-height: var(--r-backend-skills-h);
+}
+
+.skill-wall-carousel {
+  display: block;
+  overflow: hidden;
+  height: var(--r-interfaces-skills-h);
+  padding: 0;
+  color: var(--skill-wall-ink, #fffdf6);
+}
+
+.skill-list--applications.skill-wall-carousel {
+  height: var(--r-applications-skills-h);
+}
+
+.cutaway-desktop .skill-list--applications.skill-wall-carousel .skill-wall-carousel__window > .skill-item:nth-child(-n + 2) {
+  transform: translateY(0.6cqw);
+}
+
+.cutaway-desktop .skill-list--applications.skill-wall-carousel .skill-wall-carousel__window {
+  left: 4%;
+  width: 92%;
+}
+
+.skill-list--backend.skill-wall-carousel {
+  height: var(--r-backend-skills-h);
+}
+
+.skill-wall-carousel:focus-visible {
+  outline: 2px dashed currentColor;
+  outline-offset: -3px;
+}
+
+.skill-wall-carousel__window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 0.45cqw;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-wall-carousel__accessible-list {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
 .cutaway-desktop .skill-list--interfaces,
@@ -1088,6 +1158,17 @@ textarea:focus-visible {
 .cutaway-desktop .skill-list--applications .skill-item__icon {
   width: max(1.9rem, 2.7cqw);
   height: max(1.9rem, 2.7cqw);
+}
+
+.cutaway-desktop .skill-wall-carousel .skill-item {
+  gap: 0.18cqw;
+  padding: 0.15cqw 0.1cqw;
+  font-size: max(0.7rem, 0.9cqw);
+}
+
+.cutaway-desktop .skill-wall-carousel .skill-item__icon {
+  width: max(1.4rem, 2.05cqw);
+  height: max(1.4rem, 2.05cqw);
 }
 
 .skill-item__icon {
@@ -1171,9 +1252,23 @@ textarea:focus-visible {
   font-size: 1.25rem;
 }
 
+.continuation-group .skill-list {
+  position: static;
+  width: 100%;
+  min-height: 0;
+  transform: none;
+}
+
 .continuation-group .skill-item {
+  flex: 0 1 8.5rem;
   min-width: 7rem;
   border: 1px solid rgb(33 34 40 / 18%);
+}
+
+@media (max-width: 48rem) {
+  .capability-continuation--motion-fallback {
+    display: none;
+  }
 }
 
 .lower-sections {

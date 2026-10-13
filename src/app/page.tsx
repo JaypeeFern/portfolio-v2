@@ -3,6 +3,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import BrandIcon from "@/components/BrandIcon";
 import Contact from "@/components/Contact";
 import Experience from "@/components/Experiences";
+import { TechnologyGroups, TechnologyOverflow } from "@/components/TechnologyWall";
 import { portfolioData } from "@/lib/portfolio";
 
 const skillGroups = [
@@ -52,7 +53,7 @@ function CapabilityGroups({ mobile = false }: { mobile?: boolean }) {
             <h2 id={`${group.id}-title${mobile ? "-mobile" : ""}`} className={`skill-cluster__title skill-cluster__title--${group.id}`}>
               {group.title}
             </h2>
-            <SkillList skills={group.skills.slice(0, group.capacity)} className={`skill-list skill-list--${group.id}`} />
+            <SkillList skills={group.skills} className={`skill-list skill-list--${group.id}`} />
           </div>
         </section>
       ))}
@@ -134,7 +135,7 @@ export default function Home() {
         <Image src="/plates/portrait.png" alt="Portrait of John Paul Fernandez" width={1024} height={1536} priority sizes="32vw" className="cutaway-portrait" />
         <PortfolioNav />
         <HeroContent />
-        <CapabilityGroups />
+        <TechnologyGroups groups={skillGroups} />
         <ProjectPreview />
       </section>
 
@@ -149,16 +150,7 @@ export default function Home() {
         <ProjectPreview mobile />
       </section>
 
-      {skillOverflow.length > 0 && (
-        <section className="capability-continuation" aria-label="Additional technologies">
-          {skillOverflow.map((group) => (
-            <section className="continuation-group" key={group.id}>
-              <h2>{group.title}, continued</h2>
-              <SkillList skills={group.skills} className={`skill-list skill-list--${group.id}`} />
-            </section>
-          ))}
-        </section>
-      )}
+      <TechnologyOverflow groups={skillOverflow} />
 
       <div className="lower-sections">
         <Experience />
