@@ -37,6 +37,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Impeccable decision-server session files (local process and handshake state)
+/.impeccable/questions/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
