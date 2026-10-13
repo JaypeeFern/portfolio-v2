@@ -678,7 +678,7 @@ textarea:focus-visible {
   --r-applications-heading-w: 12.93%;
   --r-applications-heading-h: 5.44%;
   --r-applications-skills-x: 67.02%;
-  --r-applications-skills-y: 33.87%;
+  --r-applications-skills-y: 42.87%;
   --r-applications-skills-w: 17.09%;
   --r-applications-skills-h: 10.48%;
   --r-backend-heading-x: 56.1%;
@@ -686,7 +686,7 @@ textarea:focus-visible {
   --r-backend-heading-w: 10.28%;
   --r-backend-heading-h: 8.97%;
   --r-backend-skills-x: 67.34%;
-  --r-backend-skills-y: 52.72%;
+  --r-backend-skills-y: 55.72%;
   --r-backend-skills-w: 24.34%;
   --r-backend-skills-h: 20.16%;
   --r-projects-heading-x: 4.54%;
@@ -954,8 +954,8 @@ textarea:focus-visible {
 }
 
 .cutaway-desktop .skill-cluster__plane--interfaces .skill-list {
-  left: 64%;
-  width: 50%;
+  left: 62%;
+  width: 54%;
     top: calc(18% - 1.2cqw);
   gap: 0.45cqw;
 }
@@ -965,9 +965,9 @@ textarea:focus-visible {
 }
 
 .cutaway-desktop .skill-cluster__plane--applications .skill-list {
-  left: 57%;
-  width: 50%;
-  top: calc(13% - 1.2cqw);
+  left: 55%;
+  width: 54%;
+  top: calc(13% - 0.8cqw);
   transform: rotateZ(-6deg);
   transform-origin: 100% 0%;
 }
@@ -1077,6 +1077,17 @@ textarea:focus-visible {
 
 .cutaway-desktop .skill-item__icon {
   color: currentColor;
+}
+
+.cutaway-desktop .skill-list--interfaces .skill-item,
+.cutaway-desktop .skill-list--applications .skill-item {
+  font-size: max(0.85rem, 1.1cqw);
+}
+
+.cutaway-desktop .skill-list--interfaces .skill-item__icon,
+.cutaway-desktop .skill-list--applications .skill-item__icon {
+  width: max(1.9rem, 2.7cqw);
+  height: max(1.9rem, 2.7cqw);
 }
 
 .skill-item__icon {
