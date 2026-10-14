@@ -1,8 +1,9 @@
 import Image from "next/image";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import BrandIcon from "@/components/BrandIcon";
 import Contact from "@/components/Contact";
 import Experience from "@/components/Experiences";
+import Projects from "@/components/Projects";
 import { TechnologyGroups, TechnologyOverflow } from "@/components/TechnologyWall";
 import { portfolioData } from "@/lib/portfolio";
 
@@ -78,7 +79,7 @@ function PortfolioNav({ mobile = false }: { mobile?: boolean }) {
       </a>
       <div className="folio-nav__links">
         <a href={mobile ? "#mobile-about" : "#about"}>About</a>
-        <a href={mobile ? "#mobile-projects" : "#projects"}>Work</a>
+        <a href="#work-list">Work</a>
         <a href="#experiences">Experience</a>
         <a href="#contact">Contact</a>
       </div>
@@ -104,26 +105,19 @@ function HeroContent({ mobile = false }: { mobile?: boolean }) {
       <p className="hero-proof">{about.stats?.yearsBuilding} years building web products</p>
       <a className="hero-cta" href={about.ctaLinks?.[0]?.href ?? "#contact"}>
         {about.ctaLinks?.[0]?.label ?? "Get in touch"}
-        <ArrowRight aria-hidden="true" size={18} strokeWidth={1.8} />
+        <ArrowRight className="hero-cta__arrow" aria-hidden="true" strokeWidth={2} />
       </a>
     </div>
   );
 }
 
 function ProjectPreview({ mobile = false }: { mobile?: boolean }) {
-  const hasProjects = portfolioData.projects.length > 0;
-
   return (
-    <section id={mobile ? "mobile-projects" : "projects"} className="projects-preview" aria-labelledby={mobile ? "mobile-projects-title" : "projects-title"}>
-      <h2 id={mobile ? "mobile-projects-title" : "projects-title"}>Selected projects</h2>
-      <div className="projects-preview__status">
-        {hasProjects ? (
-          <a href="#work-list">Browse {portfolioData.projects.length} projects <ArrowUpRight aria-hidden="true" size={16} /></a>
-        ) : (
-          <p><strong>No project writeups yet.</strong></p>
-        )}
-      </div>
-    </section>
+    <div className="projects-preview">
+      <h2 id={mobile ? "mobile-projects-title" : "projects-title"}>
+        <a href="#work-list">Projects</a>
+      </h2>
+    </div>
   );
 }
 
@@ -151,6 +145,8 @@ export default function Home() {
       </section>
 
       <TechnologyOverflow groups={skillOverflow} />
+
+      <Projects />
 
       <div className="lower-sections">
         <Experience />

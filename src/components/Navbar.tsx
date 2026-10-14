@@ -8,7 +8,7 @@ import ThemeToggle from "./ThemeToggle";
 
 const sections = [
     { name: "Home", href: "#about" },
-    { name: "Work", href: "#projects" },
+    { name: "Work", href: "#work-list" },
     { name: "Experience", href: "#experiences" },
     { name: "Contact", href: "#contact" },
 ];
