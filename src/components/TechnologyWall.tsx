@@ -33,16 +33,20 @@ function WallCarousel({ group }: { group: TechnologyGroup }) {
   const [isFocused, setIsFocused] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isDocumentVisible, setIsDocumentVisible] = useState(true);
-  const shouldRotate = prefersReducedMotion !== true && !isHovered && !isFocused && isVisible && isDocumentVisible;
+  const isVisibleOrObserverUnavailable =
+    isVisible || typeof IntersectionObserver === "undefined";
+  const shouldRotate =
+    prefersReducedMotion !== true &&
+    !isHovered &&
+    !isFocused &&
+    isVisibleOrObserverUnavailable &&
+    isDocumentVisible;
 
   useEffect(() => {
     const carousel = carouselRef.current;
     if (!carousel) return;
 
-    if (typeof IntersectionObserver === "undefined") {
-      setIsVisible(true);
-      return;
-    }
+    if (typeof IntersectionObserver === "undefined") return;
 
     const observer = new IntersectionObserver(([entry]) => {
       setIsVisible(entry.isIntersecting);
