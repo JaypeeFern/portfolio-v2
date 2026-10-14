@@ -1400,6 +1400,12 @@ textarea:focus-visible {
   color: #fffdf6;
 }
 
+/* Native fragment jumps to the Email field can bypass Motion's viewport observer. */
+.contact-section-wrap:has(#contact-email:target) > div {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 .folio-section__intro h2,
 .contact-intro h2 {
   max-width: 15ch;

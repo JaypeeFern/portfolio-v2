@@ -118,7 +118,7 @@ function HeroContent({ mobile = false }: { mobile?: boolean }) {
       <EntranceText className="hero-proof">
         {about.stats?.yearsBuilding} years building web products
       </EntranceText>
-      <EntranceLink className="hero-cta" href={about.ctaLinks?.[0]?.href ?? "#contact"}>
+      <EntranceLink className="hero-cta" href={about.ctaLinks?.[0]?.href ?? "#contact-email"}>
         {about.ctaLinks?.[0]?.label ?? "Get in touch"}
         <ArrowRight className="hero-cta__arrow" aria-hidden="true" strokeWidth={2} />
       </EntranceLink>
