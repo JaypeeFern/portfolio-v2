@@ -140,6 +140,7 @@
   grid-column: 2;
   max-width: 16ch;
   margin: 0;
+  margin-inline-start: clamp(2rem, 4vw, 4rem);
   font-family: var(--font-display), sans-serif;
   font-size: clamp(2rem, 3.2vw, 3.25rem);
   font-weight: 600;
@@ -212,6 +213,7 @@
   .projectsEmptyStateText {
     grid-column: 1;
     max-width: none;
+    margin-inline-start: 0;
     padding-inline-start: 0.5rem;
     font-size: clamp(2rem, 9vw, 2.75rem);
   }
