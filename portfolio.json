@@ -24,26 +24,7 @@
         "statusLabel": "Available for work",
         "contactEmail": "contact@jpfernandez.dev"
     },
-    "experiences": [
-        {
-            "position": "Sample role: Full Stack Developer",
-            "companyName": "Demo Studio (fictional)",
-            "dateOfEmployment": {
-                "from": "2024",
-                "to": "2025"
-            },
-            "description": "Fictional sample experience entry to demonstrate the portfolio timeline layout. Replace with a real role before publishing."
-        },
-        {
-            "position": "Sample role: Frontend Developer",
-            "companyName": "Example Product Team (fictional)",
-            "dateOfEmployment": {
-                "from": "2023",
-                "to": "2024"
-            },
-            "description": "Fictional sample experience entry showing how a second position appears. Replace with real experience before publishing."
-        }
-    ],
+    "experiences": [],
     "skills": [
         "React",
         "Next.js",

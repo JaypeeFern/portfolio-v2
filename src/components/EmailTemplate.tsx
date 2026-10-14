@@ -1,12 +1,11 @@
 interface EmailTemplateProps {
-    name: string;
     email: string;
     message: string;
     ip: string;
     date: string;
 }
 
-export function EmailTemplate({ name, email, message, ip, date }: EmailTemplateProps) {
+export function EmailTemplate({ email, message, ip, date }: EmailTemplateProps) {
     return (
         <div style={{ backgroundColor: '#f4f4f5', padding: '40px 20px', fontFamily: 'sans-serif', color: '#333' }}>
             <div style={{ maxWidth: '600px', margin: '0 auto', backgroundColor: '#ffffff', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)' }}>
@@ -17,7 +16,6 @@ export function EmailTemplate({ name, email, message, ip, date }: EmailTemplateP
 
                 {/* Body */}
                 <div style={{ padding: '32px 24px' }}>
-                    <p style={{ margin: '0 0 8px', fontSize: '14px', color: '#71717a' }}><strong>Name:</strong> <span style={{ color: '#18181b' }}>{name}</span></p>
                     <p style={{ margin: '0 0 24px', fontSize: '14px', color: '#71717a' }}><strong>Email:</strong> <span style={{ color: '#18181b' }}>{email}</span></p>
                     
                     <div style={{ backgroundColor: '#f4f4f5', padding: '16px', borderRadius: '6px' }}>
@@ -38,7 +36,7 @@ export function EmailTemplate({ name, email, message, ip, date }: EmailTemplateP
                                 fontSize: '14px'
                             }}
                         >
-                            Reply to {name}
+                            Reply to sender
                         </a>
                         <p style={{ fontSize: '12px', color: '#a1a1aa', marginTop: '12px', lineHeight: '1.4' }}>
                             (Clicking this button opens a clean draft without quoting this form submission)

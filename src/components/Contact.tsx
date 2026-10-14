@@ -69,10 +69,6 @@ export default function Contact() {
                         </div>
 
                         <label className="form-field">
-                            <span>Name</span>
-                            <input name="name" type="text" autoComplete="name" required disabled={isSubmitting} maxLength={100} />
-                        </label>
-                        <label className="form-field">
                             <span>Email</span>
                             <input name="email" type="email" autoComplete="email" required disabled={isSubmitting} maxLength={254} />
                         </label>

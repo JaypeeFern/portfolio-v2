@@ -18,7 +18,6 @@ export async function POST(request: Request) {
         }
 
         const formBody = body as Record<string, unknown>;
-        const name = getFormValue(formBody.name);
         const email = getFormValue(formBody.email);
         const message = getFormValue(formBody.message);
         const gotcha = getFormValue(formBody._gotcha);
@@ -30,11 +29,11 @@ export async function POST(request: Request) {
         }
 
         // Basic validation
-        if (!name || !email || !message) {
+        if (!email || !message) {
             return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
         }
 
-        if (name.length > 100 || email.length > 254 || message.length > 5000) {
+        if (email.length > 254 || message.length > 5000) {
             return NextResponse.json({ error: 'Input exceeds maximum length' }, { status: 400 });
         }
 
@@ -67,9 +66,9 @@ export async function POST(request: Request) {
         const { data, error } = await resend.emails.send({
             from: `Portfolio <${contactEmail}>`,
             to: contactEmail,
-            subject: `Portfolio inquiry from ${name}`,
+            subject: 'Portfolio inquiry',
             replyTo: email,
-            react: EmailTemplate({ name, email, message, ip, date }),
+            react: EmailTemplate({ email, message, ip, date }),
         });
 
         if (error) {
