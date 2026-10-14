@@ -1220,12 +1220,19 @@ textarea:focus-visible {
 }
 
 .lower-sections {
-  padding: 0 0 1.5rem;
+  padding: 0;
 }
 
 .folio-section {
   padding-block: clamp(2.5rem, 7vw, 6rem);
   border-top: 1px solid rgb(33 34 40 / 20%);
+}
+
+.contact-section-wrap {
+  width: 100%;
+  border-top-color: rgb(255 253 246 / 28%);
+  background: #212228;
+  color: #fffdf6;
 }
 
 .folio-section__intro h2,
@@ -1246,16 +1253,18 @@ textarea:focus-visible {
 }
 
 .contact-layout {
+  width: min(calc(100% - 3rem), 84rem);
+  margin-inline: auto;
   display: grid;
   grid-template-columns: minmax(14rem, 0.9fr) minmax(0, 1.1fr);
-  gap: clamp(2rem, 8vw, 8rem);
+  gap: clamp(1.5rem, 4vw, 4rem);
   align-items: start;
 }
 
 .contact-intro > p {
   max-width: 32ch;
   margin: 1.25rem 0 0;
-  color: #555761;
+  color: #d5d6dc;
   font-size: 1.05rem;
   line-height: 1.55;
 }
@@ -1263,7 +1272,7 @@ textarea:focus-visible {
 .contact-email {
   display: inline-block;
   margin-top: 1.5rem;
-  color: #0849b0;
+  color: #d7f24a;
   font-weight: 600;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
@@ -1277,7 +1286,7 @@ textarea:focus-visible {
 .contact-form .form-field {
   display: grid;
   gap: 0.45rem;
-  color: #30323b;
+  color: #fffdf6;
   font-size: 0.9rem;
   font-weight: 600;
 }
@@ -1320,13 +1329,6 @@ textarea:focus-visible {
 
 .contact-form .button-primary:disabled {
   opacity: 0.55;
-}
-
-.folio-footer {
-  padding-block: 1.25rem;
-  border-top: 1px solid rgb(33 34 40 / 20%);
-  color: #656771;
-  font-size: 0.875rem;
 }
 
 @media (max-width: 999px) {

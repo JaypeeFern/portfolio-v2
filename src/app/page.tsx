@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import BrandIcon from "@/components/BrandIcon";
 import Contact from "@/components/Contact";
 import Experience from "@/components/Experiences";
+import PortfolioFooter from "@/components/PortfolioFooter";
 import Projects from "@/components/Projects";
 import { TechnologyGroups, TechnologyOverflow } from "@/components/TechnologyWall";
 import { portfolioData } from "@/lib/portfolio";
@@ -124,35 +125,39 @@ function ProjectPreview({ mobile = false }: { mobile?: boolean }) {
 export default function Home() {
   return (
     <div className="portfolio-page">
-      <section id="about" className="cutaway-desktop" aria-label="Introduction and technical range">
-        <Image src="/plates/section-art.svg" alt="" fill priority sizes="100vw" className="cutaway-art" />
-        <Image src="/plates/portrait.png" alt="Portrait of John Paul Fernandez" width={1024} height={1536} priority sizes="32vw" className="cutaway-portrait" />
-        <PortfolioNav />
-        <HeroContent />
-        <TechnologyGroups groups={skillGroups} />
-        <ProjectPreview />
-      </section>
+      <main className="relative" id="page-top">
+        <section id="about" className="cutaway-desktop" aria-label="Introduction and technical range">
+          <Image src="/plates/section-art.svg" alt="" fill priority sizes="100vw" className="cutaway-art" />
+          <Image src="/plates/portrait.png" alt="Portrait of John Paul Fernandez" width={1024} height={1536} priority sizes="32vw" className="cutaway-portrait" />
+          <PortfolioNav />
+          <HeroContent />
+          <TechnologyGroups groups={skillGroups} />
+          <ProjectPreview />
+        </section>
 
-      <section id="mobile-about" className="cutaway-mobile" aria-label="Introduction and technical range">
-        <div className="mobile-visual">
-          <div className="mobile-visual__art" aria-hidden="true" />
-          <Image src="/plates/portrait.png" alt="Portrait of John Paul Fernandez" width={1024} height={1536} priority sizes="42vw" className="mobile-visual__portrait" />
-          <PortfolioNav mobile />
+        <section id="mobile-about" className="cutaway-mobile" aria-label="Introduction and technical range">
+          <div className="mobile-visual">
+            <div className="mobile-visual__art" aria-hidden="true" />
+            <Image src="/plates/portrait.png" alt="Portrait of John Paul Fernandez" width={1024} height={1536} priority sizes="42vw" className="mobile-visual__portrait" />
+            <PortfolioNav mobile />
+          </div>
+          <HeroContent mobile />
+          <CapabilityGroups mobile />
+          <ProjectPreview mobile />
+        </section>
+
+        <TechnologyOverflow groups={skillOverflow} />
+
+        <Projects />
+
+        <div className="lower-sections">
+          <Experience />
         </div>
-        <HeroContent mobile />
-        <CapabilityGroups mobile />
-        <ProjectPreview mobile />
-      </section>
 
-      <TechnologyOverflow groups={skillOverflow} />
-
-      <Projects />
-
-      <div className="lower-sections">
-        <Experience />
         <Contact />
-        <footer className="folio-footer">© {new Date().getFullYear()} {portfolioData.about.name}</footer>
-      </div>
+      </main>
+
+      <PortfolioFooter />
     </div>
   );
 }
