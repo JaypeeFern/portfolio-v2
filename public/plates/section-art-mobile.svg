@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 370" preserveAspectRatio="none" fill="none">
+  <path fill="#f7f5ec" d="M0 0h440v370H0z" />
+
+  <path fill="#0849b0" d="M174 0h266v144l-53-7-50-17-160 18-35-60z" />
+  <path fill="#f86d49" d="m196 139 71 23 173-42v135l-183 17-77-53z" />
+  <path fill="#212228" d="m249 249 191-17v138H225l25-46-19-38z" />
+  <path fill="#f86d49" d="M0 222 75 190l34 76-38 104H0z" />
+  <path fill="#0849b0" d="m0 310 42-13 27 73H0z" />
+
+  <g stroke="#20283a" stroke-width="1.4" opacity=".72">
+    <path d="M0 48h440M0 326h440" />
+    <path d="M73 47v281M367 51v257" />
+    <path d="m174 0-14 61 35 67-31 64 32 77-22 101" />
+    <path d="m388 137 52 7M257 266l183-17" />
+  </g>
+
+  <g stroke="#20283a" stroke-width="1.4" opacity=".75">
+    <path d="M55 143h38m-19-19v38M385 173h34m-17-17v34" />
+    <path d="M42 300h34m-17-17v34M354 311h35m-17-17v35" />
+  </g>
+
+  <path fill="#d7f24a" stroke="#20283a" stroke-width="1.2" d="m99 207 15 3-5 18-15-4z" />
+  <path fill="#d7f24a" stroke="#20283a" stroke-width="1.2" d="m344 201 16-3 4 19-16 3z" />
+  <path stroke="#20283a" stroke-width="1.2" stroke-dasharray="3 5" opacity=".7" d="m116 192 25-18m180 105 27-16" />
+</svg>

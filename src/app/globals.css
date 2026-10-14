@@ -1345,26 +1345,28 @@ textarea:focus-visible {
     position: relative;
     height: clamp(18rem, 84vw, 28rem);
     overflow: hidden;
-    background: #0849b0;
+    background: #f7f5ec;
   }
 
   .mobile-visual__art {
     position: absolute;
     inset: 0;
-    background-image: url("/plates/section-art.svg");
-    background-size: cover;
+    background-image: url("/plates/section-art-mobile.svg");
+    background-size: 100% 100%;
     background-position: center;
   }
 
   .mobile-visual__portrait {
     position: absolute;
     z-index: 2;
-    left: 16%;
-    top: 8%;
-    width: 42%;
-    height: 82%;
-    object-fit: cover;
-    object-position: center top;
+    top: 2.75rem;
+    left: calc(50% - 0.6rem);
+    width: auto;
+    height: calc(100% - 2.75rem);
+    max-width: 72%;
+    transform: translateX(-50%);
+    object-fit: contain;
+    object-position: center bottom;
   }
 
   .mobile-visual .folio-nav {
@@ -1399,6 +1401,12 @@ textarea:focus-visible {
     display: grid;
     gap: 0.75rem;
     padding: 2rem 1.25rem 1.5rem;
+  }
+
+  .mobile-profile__identity,
+  .mobile-profile__details {
+    display: grid;
+    gap: 0.75rem;
   }
 
   .mobile-profile .hero-name,
@@ -1522,6 +1530,70 @@ textarea:focus-visible {
   .contact-layout {
     grid-template-columns: minmax(0, 1fr);
     gap: 2rem;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 999px) {
+  .mobile-visual {
+    height: clamp(20rem, 47vw, 28rem);
+  }
+
+  .mobile-visual__art {
+    background-image: url("/plates/section-art-tablet.svg");
+  }
+
+  .mobile-profile {
+    max-width: 84rem;
+    margin-inline: auto;
+    padding: clamp(2.25rem, 4vw, 3rem) clamp(2rem, 5vw, 3.75rem);
+    grid-template-columns: minmax(0, 1.05fr) minmax(17rem, 0.95fr);
+    align-items: center;
+    column-gap: clamp(2rem, 5vw, 3.5rem);
+    row-gap: 0;
+  }
+
+  .mobile-profile__identity,
+  .mobile-profile__details {
+    align-content: center;
+  }
+
+  .mobile-profile__identity {
+    gap: 0.65rem;
+  }
+
+  .mobile-profile__details {
+    gap: 1rem;
+  }
+
+  .mobile-profile .hero-name {
+    font-size: clamp(3.25rem, 6.2vw, 4rem);
+    line-height: 0.94;
+  }
+
+  .mobile-profile .hero-role {
+    margin-top: 0.1rem;
+  }
+
+  .mobile-profile .hero-headline {
+    margin-top: 0.35rem;
+    font-size: clamp(1.15rem, 2.35vw, 1.4rem);
+  }
+
+  .mobile-profile .hero-description {
+    max-width: 40ch;
+    font-size: clamp(1rem, 1.65vw, 1.1rem);
+  }
+
+  .mobile-profile .hero-cta {
+    width: 100%;
+    max-width: 23rem;
+    margin-top: 0.25rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .contact-layout {
+    width: min(calc(100% - 2.5rem), 84rem);
   }
 }
 

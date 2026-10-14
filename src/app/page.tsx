@@ -94,20 +94,40 @@ function HeroContent({ mobile = false }: { mobile?: boolean }) {
   const firstLine = nameParts.slice(0, -1).join(" ");
   const lastLine = nameParts.at(-1);
 
-  return (
-    <div className={mobile ? "mobile-profile" : "hero-profile"}>
+  const identity = (
+    <>
       <h1 className="hero-name">
         <span>{firstLine}</span>
         <span className="hero-name__accent">{lastLine}</span>
       </h1>
       <p className="hero-role">{about.role}</p>
       <p className="hero-headline">{about.headline}</p>
+    </>
+  );
+  const details = (
+    <>
       <p className="hero-description">{about.personalDescription}</p>
       <p className="hero-proof">{about.stats?.yearsBuilding} years building web products</p>
       <a className="hero-cta" href={about.ctaLinks?.[0]?.href ?? "#contact"}>
         {about.ctaLinks?.[0]?.label ?? "Get in touch"}
         <ArrowRight className="hero-cta__arrow" aria-hidden="true" strokeWidth={2} />
       </a>
+    </>
+  );
+
+  if (!mobile) {
+    return (
+      <div className="hero-profile">
+        {identity}
+        {details}
+      </div>
+    );
+  }
+
+  return (
+    <div className="mobile-profile">
+      <div className="mobile-profile__identity">{identity}</div>
+      <div className="mobile-profile__details">{details}</div>
     </div>
   );
 }
