@@ -132,20 +132,6 @@
     @apply fixed inset-0 -z-10;
   }
 
-  .app-background::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.26;
-    background-image:
-      linear-gradient(hsl(var(--foreground) / 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--foreground) / 0.04) 1px, transparent 1px);
-    background-size: 48px 48px;
-    mask-image: linear-gradient(to bottom, black, transparent 72%);
-    animation: background-drift 28s linear infinite;
-  }
-
   .section-container {
     width: min(100% - 2rem, 82rem);
     margin-inline: auto;
@@ -546,15 +532,6 @@
 
   .section-block {
     @apply py-5;
-  }
-}
-
-@keyframes background-drift {
-  from {
-    background-position: 0 0, 0 0;
-  }
-  to {
-    background-position: 48px 48px, 48px 48px;
   }
 }
 
