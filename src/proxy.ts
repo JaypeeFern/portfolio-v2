@@ -4,7 +4,7 @@ import { getSeoConfig } from "@/lib/seo/config";
 export function proxy(request: NextRequest) {
   const response = NextResponse.next();
 
-  if (!getSeoConfig(process.env, request.headers.get("host")).isIndexable) {
+  if (!getSeoConfig(process.env, request.headers).isIndexable) {
     response.headers.set("X-Robots-Tag", "noindex, nofollow");
   }
 

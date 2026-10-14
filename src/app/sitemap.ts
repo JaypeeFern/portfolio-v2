@@ -6,10 +6,7 @@ export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const requestHeaders = await headers();
-  const { isIndexable, siteUrl } = getSeoConfig(
-    process.env,
-    requestHeaders.get("host"),
-  );
+  const { isIndexable, siteUrl } = getSeoConfig(process.env, requestHeaders);
 
   if (!isIndexable) {
     return [];

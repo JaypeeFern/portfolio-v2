@@ -2,7 +2,7 @@ export type SeoDeploymentEnvironment = "production" | "preview" | "local";
 
 export interface SeoConfig {
   deploymentEnvironment: SeoDeploymentEnvironment;
-  isCanonicalHost: boolean;
+  isCanonicalOrigin: boolean;
   isIndexable: boolean;
   siteUrl: string;
 }
@@ -110,62 +110,94 @@ function normalizeSiteUrl(
   return url.origin;
 }
 
-function matchesCanonicalHostname(
-  requestHostname: string | null | undefined,
-  siteUrl: string,
+function isTrustedProxyOriginEnabled(
+  environment: NodeJS.ProcessEnv,
 ): boolean {
-  if (requestHostname === undefined) {
-    return true;
+  const configuredValue = environment.SEO_TRUSTED_PROXY_ORIGIN?.trim();
+
+  if (!configuredValue) {
+    return false;
   }
 
-  const trimmedHostname = requestHostname?.trim();
-  if (!trimmedHostname) {
-    return false;
+  if (configuredValue !== "true" && configuredValue !== "false") {
+    throw new Error(
+      'SEO_TRUSTED_PROXY_ORIGIN must be "true" or "false". Set it to "true" only when a trusted ingress overwrites X-SEO-Public-Origin and direct origin access is blocked.',
+    );
+  }
+
+  return configuredValue === "true";
+}
+
+function normalizeRequestOrigin(
+  value: string | null | undefined,
+): string | undefined {
+  const trimmedValue = value?.trim();
+
+  if (!trimmedValue || trimmedValue.includes(",")) {
+    return undefined;
   }
 
   let requestUrl: URL;
 
   try {
-    requestUrl = new URL("http://" + trimmedHostname);
+    requestUrl = new URL(trimmedValue);
   } catch {
-    return false;
+    return undefined;
   }
 
   if (
+    (requestUrl.protocol !== "https:" && requestUrl.protocol !== "http:") ||
+    !requestUrl.hostname ||
     requestUrl.username ||
     requestUrl.password ||
     requestUrl.pathname !== "/" ||
     requestUrl.search ||
-    requestUrl.hash
+    requestUrl.hash ||
+    trimmedValue.includes("?") ||
+    trimmedValue.includes("#")
   ) {
+    return undefined;
+  }
+
+  return requestUrl.origin;
+}
+
+function matchesCanonicalOrigin(
+  environment: NodeJS.ProcessEnv,
+  requestHeaders: Pick<Headers, "get"> | undefined,
+  siteUrl: string,
+): boolean {
+  if (!isTrustedProxyOriginEnabled(environment) || !requestHeaders) {
     return false;
   }
 
-  return (
-    requestUrl.hostname.toLowerCase() ===
-    new URL(siteUrl).hostname.toLowerCase()
+  // Next or a client can supply standard forwarded headers before this check.
+  const requestOrigin = normalizeRequestOrigin(
+    requestHeaders.get("x-seo-public-origin"),
   );
+
+  return requestOrigin === siteUrl;
 }
 
 export function getSeoConfig(
   environment: NodeJS.ProcessEnv = process.env,
-  requestHostname?: string | null,
+  requestHeaders?: Pick<Headers, "get">,
 ): SeoConfig {
   const deploymentEnvironment = getDeploymentEnvironment(environment);
   const siteUrl = normalizeSiteUrl(
     environment.SITE_URL,
     deploymentEnvironment,
   );
-  const isCanonicalHost = matchesCanonicalHostname(
-    requestHostname,
+  const isCanonicalOrigin = matchesCanonicalOrigin(
+    environment,
+    requestHeaders,
     siteUrl,
   );
 
   return {
     deploymentEnvironment,
-    isCanonicalHost,
-    isIndexable:
-      deploymentEnvironment === "production" && isCanonicalHost,
+    isCanonicalOrigin,
+    isIndexable: deploymentEnvironment === "production" && isCanonicalOrigin,
     siteUrl,
   };
 }

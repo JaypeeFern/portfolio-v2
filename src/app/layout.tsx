@@ -66,7 +66,7 @@ const { name, role, personalDescription } = portfolioData.about;
 
 async function getRequestSeoConfig() {
   const requestHeaders = await headers();
-  return getSeoConfig(process.env, requestHeaders.get("host"));
+  return getSeoConfig(process.env, requestHeaders);
 }
 
 export async function generateMetadata(): Promise<Metadata> {
