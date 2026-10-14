@@ -31,7 +31,6 @@ Use it for:
 - Skills shown in the technology rail
 - Projects and experiences
 - Optional `resumeUrl` and `contactEmail`
-- Optional metadata URL
 
 The schema and TypeScript type mirror live beside it:
 
@@ -39,6 +38,27 @@ The schema and TypeScript type mirror live beside it:
 - `src/types/portfolio.ts`
 
 When adding new data-driven fields, update all three together: JSON, schema, and TypeScript type.
+
+## SEO Configuration
+
+SEO metadata and structured data use portfolio.json for the name, role, description, location, social links, projects, and experiences. Projects and experiences added there automatically appear in the page's JSON-LD; no per-entry SEO settings are needed.
+
+Configure these environment variables:
+
+| Variable | Requirement | Purpose |
+| --- | --- | --- |
+| SITE_URL | Required when SEO_DEPLOYMENT_ENV=production; recommended in previews | Canonical HTTPS origin for metadata, canonical links, Open Graph, the sitemap, and JSON-LD. Use the production origin for previews too. |
+| SEO_DEPLOYMENT_ENV | Required for production builds and deployments; values are production, preview, or local | Only production enables indexing. Development defaults to local when this variable is omitted. |
+| GOOGLE_SITE_VERIFICATION | Optional | Google Search Console HTML verification token. |
+| BING_SITE_VERIFICATION | Optional | Bing Webmaster Tools HTML verification token. |
+
+For a production deployment, set SEO_DEPLOYMENT_ENV=production and SITE_URL to the canonical HTTPS origin. Preview deployments must set SEO_DEPLOYMENT_ENV=preview; local development can use SEO_DEPLOYMENT_ENV=local. Production builds reject a missing environment mode, a local mode, a missing production URL, and malformed URLs. Preview and local environments get noindex metadata, a disallow-all robots.txt, an empty sitemap, and an X-Robots-Tag: noindex, nofollow response header.
+
+To change domains, update SITE_URL in the deployment environment and redeploy. Do not set the canonical URL in portfolio.json.
+
+To verify ownership, select HTML tag verification in Google Search Console or Bing Webmaster Tools, set the returned token in the matching variable, deploy, then complete verification in that service. Submit the configured canonical domain's /sitemap.xml in each service's sitemap tools. This repository does not perform external registration or verification.
+
+The sitemap currently lists the homepage, the only public page route. Add a sitemap entry when a real indexable page route is introduced; do not add project or experience entries as URLs until individual pages exist.
 
 ## Page Structure
 

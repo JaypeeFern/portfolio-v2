@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Portfolio Data",
   "type": "object",
-  "required": ["about", "experiences", "skills", "projects", "metadata"],
+  "required": ["about", "experiences", "skills", "projects"],
   "additionalProperties": false,
   "properties": {
     "$schema": {
@@ -92,16 +92,6 @@
       "type": "array",
       "items": {
         "$ref": "#/$defs/project"
-      }
-    },
-    "metadata": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "url": {
-          "type": "string",
-          "format": "uri"
-        }
       }
     }
   },

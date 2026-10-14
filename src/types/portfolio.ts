@@ -58,14 +58,9 @@ export interface PortfolioProject {
   links?: PortfolioProjectLinks;
 }
 
-export interface PortfolioMetadata {
-  url?: string;
-}
-
 export interface PortfolioData {
   about: PortfolioAbout;
   experiences: PortfolioExperience[];
   skills: string[];
   projects: PortfolioProject[];
-  metadata: PortfolioMetadata;
 }
