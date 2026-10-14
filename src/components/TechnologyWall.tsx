@@ -134,8 +134,18 @@ export function TechnologyGroups({ groups }: { groups: TechnologyGroup[] }) {
       {groups.map((group) => (
         <section className={`skill-cluster skill-cluster--${group.id}`} key={group.id} aria-labelledby={`${group.id}-title`}>
           <div className={`skill-cluster__plane skill-cluster__plane--${group.id}`}>
-            <h2 id={`${group.id}-title`} className={`skill-cluster__title skill-cluster__title--${group.id}`}>
-              {group.title}
+            <h2 id={`${group.id}-title`} className={`skill-cluster__title skill-cluster__title--${group.id}`} aria-label={group.title}>
+              {group.id === "backend" ? (
+                <>
+                  Data,
+                  <br />
+                  Infrastructure
+                  <br />
+                  &amp; Tools
+                </>
+              ) : (
+                group.title
+              )}
             </h2>
             {group.skills.length > group.capacity && prefersReducedMotion !== true ? (
               <WallCarousel group={group} />

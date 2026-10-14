@@ -9,12 +9,12 @@ import { TechnologyGroups, TechnologyOverflow } from "@/components/TechnologyWal
 import { portfolioData } from "@/lib/portfolio";
 
 const skillGroups = [
-  { id: "interfaces", title: "Frontend", skills: ["React", "Tailwind CSS"], capacity: 4 },
-  { id: "applications", title: "Framework & language", skills: ["Next.js", "TypeScript"], capacity: 4 },
+  { id: "interfaces", title: "Frontend", skills: ["React", "Next.js", "Tailwind CSS"], capacity: 4 },
+  { id: "applications", title: "Framework & language", skills: ["TypeScript", "NestJS", "Node.js"], capacity: 4 },
   {
     id: "backend",
-    title: "Backend & tooling",
-    skills: ["Node.js", "NestJS", "PostgreSQL", "MongoDB", "Docker", "Git", "Firebase", "Nginx"],
+    title: "Data, Infrastructure & Tools",
+    skills: ["PostgreSQL", "MongoDB", "Firebase", "Docker", "Nginx", "Git"],
     capacity: 8,
   },
 ].map((group) => ({
