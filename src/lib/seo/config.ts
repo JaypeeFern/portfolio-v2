@@ -2,6 +2,7 @@ export type SeoDeploymentEnvironment = "production" | "preview" | "local";
 
 export interface SeoConfig {
   deploymentEnvironment: SeoDeploymentEnvironment;
+  isCanonicalHost: boolean;
   isIndexable: boolean;
   siteUrl: string;
 }
@@ -109,14 +110,62 @@ function normalizeSiteUrl(
   return url.origin;
 }
 
+function matchesCanonicalHostname(
+  requestHostname: string | null | undefined,
+  siteUrl: string,
+): boolean {
+  if (requestHostname === undefined) {
+    return true;
+  }
+
+  const trimmedHostname = requestHostname?.trim();
+  if (!trimmedHostname) {
+    return false;
+  }
+
+  let requestUrl: URL;
+
+  try {
+    requestUrl = new URL("http://" + trimmedHostname);
+  } catch {
+    return false;
+  }
+
+  if (
+    requestUrl.username ||
+    requestUrl.password ||
+    requestUrl.pathname !== "/" ||
+    requestUrl.search ||
+    requestUrl.hash
+  ) {
+    return false;
+  }
+
+  return (
+    requestUrl.hostname.toLowerCase() ===
+    new URL(siteUrl).hostname.toLowerCase()
+  );
+}
+
 export function getSeoConfig(
   environment: NodeJS.ProcessEnv = process.env,
+  requestHostname?: string | null,
 ): SeoConfig {
   const deploymentEnvironment = getDeploymentEnvironment(environment);
+  const siteUrl = normalizeSiteUrl(
+    environment.SITE_URL,
+    deploymentEnvironment,
+  );
+  const isCanonicalHost = matchesCanonicalHostname(
+    requestHostname,
+    siteUrl,
+  );
 
   return {
     deploymentEnvironment,
-    isIndexable: deploymentEnvironment === "production",
-    siteUrl: normalizeSiteUrl(environment.SITE_URL, deploymentEnvironment),
+    isCanonicalHost,
+    isIndexable:
+      deploymentEnvironment === "production" && isCanonicalHost,
+    siteUrl,
   };
 }

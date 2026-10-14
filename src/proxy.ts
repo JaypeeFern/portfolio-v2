@@ -1,10 +1,10 @@
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 import { getSeoConfig } from "@/lib/seo/config";
 
-export function proxy() {
+export function proxy(request: NextRequest) {
   const response = NextResponse.next();
 
-  if (!getSeoConfig().isIndexable) {
+  if (!getSeoConfig(process.env, request.headers.get("host")).isIndexable) {
     response.headers.set("X-Robots-Tag", "noindex, nofollow");
   }
 

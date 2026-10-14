@@ -48,11 +48,13 @@ Configure these environment variables:
 | Variable | Requirement | Purpose |
 | --- | --- | --- |
 | SITE_URL | Required when SEO_DEPLOYMENT_ENV=production; recommended in previews | Canonical HTTPS origin for metadata, canonical links, Open Graph, the sitemap, and JSON-LD. Use the production origin for previews too. |
-| SEO_DEPLOYMENT_ENV | Required for production builds and deployments; values are production, preview, or local | Only production enables indexing. Development defaults to local when this variable is omitted. |
+| SEO_DEPLOYMENT_ENV | Required for production builds and deployments; values are production, preview, or local | Production enables indexing only on the SITE_URL hostname. Development defaults to local when this variable is omitted. |
 | GOOGLE_SITE_VERIFICATION | Optional | Google Search Console HTML verification token. |
 | BING_SITE_VERIFICATION | Optional | Bing Webmaster Tools HTML verification token. |
 
-For a production deployment, set SEO_DEPLOYMENT_ENV=production and SITE_URL to the canonical HTTPS origin. Preview deployments must set SEO_DEPLOYMENT_ENV=preview; local development can use SEO_DEPLOYMENT_ENV=local. Production builds reject a missing environment mode, a local mode, a missing production URL, and malformed URLs. Preview and local environments get noindex metadata, a disallow-all robots.txt, an empty sitemap, and an X-Robots-Tag: noindex, nofollow response header.
+For a production deployment, set SEO_DEPLOYMENT_ENV=production and SITE_URL to the canonical HTTPS origin. Preview deployments must set SEO_DEPLOYMENT_ENV=preview; local development can use SEO_DEPLOYMENT_ENV=local. Production builds reject a missing environment mode, a local mode, a missing production URL, and malformed URLs. Preview and local environments get noindex metadata, a disallow-all robots.txt, an empty sitemap, and an X-Robots-Tag: noindex, nofollow response header. Production requests on a hostname that differs from SITE_URL also get noindex metadata and the X-Robots-Tag header, with an empty sitemap and disallow-all robots.txt.
+
+SEO metadata, structured data, robots.txt, and sitemap.xml read the validated SEO environment at request time. A promoted build artifact can use the target environment's SEO_DEPLOYMENT_ENV and SITE_URL without rebuilding; both build and runtime environments must still provide valid configuration.
 
 To change domains, update SITE_URL in the deployment environment and redeploy. Do not set the canonical URL in portfolio.json.
 
