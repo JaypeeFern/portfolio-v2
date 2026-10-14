@@ -158,7 +158,7 @@ export default function Home() {
       <EntranceSequence className="relative" id="page-top">
         <section id="about" className="cutaway-desktop" aria-label="Introduction and technical range">
           <EntranceImage src="/plates/section-art.svg" alt="" fill priority sizes="100vw" intro="art" className="cutaway-art" />
-          <EntranceImage src="/plates/portrait.png" alt="Portrait of John Paul Fernandez" width={1024} height={1536} priority sizes="32vw" intro="portrait" className="cutaway-portrait" />
+          <EntranceImage src="/plates/portrait-v2.png" alt="Portrait of John Paul Fernandez" width={1024} height={1536} priority sizes="32vw" intro="portrait" className="cutaway-portrait" />
           <PortfolioNav />
           <HeroContent />
           <TechnologyGroups groups={skillGroups} />
@@ -168,7 +168,7 @@ export default function Home() {
         <section id="mobile-about" className="cutaway-mobile" aria-label="Introduction and technical range">
           <div className="mobile-visual">
             <EntranceDiv className="mobile-visual__art" intro="art" aria-hidden="true" />
-            <EntranceImage src="/plates/portrait.png" alt="Portrait of John Paul Fernandez" width={1024} height={1536} priority sizes="42vw" intro="portrait" className="mobile-visual__portrait" />
+            <EntranceImage src="/plates/portrait-v2.png" alt="Portrait of John Paul Fernandez" width={1024} height={1536} priority sizes="42vw" intro="portrait" className="mobile-visual__portrait" />
             <PortfolioNav mobile />
           </div>
           <HeroContent mobile />
