@@ -1,0 +1,156 @@
+.experienceSection {
+  --experience-section-width: min(92vw, 96rem);
+  width: var(--experience-section-width);
+  margin-inline: calc((100% - var(--experience-section-width)) / 2);
+}
+
+.experienceIntro {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.experienceIntro::after {
+  width: clamp(9rem, 20vw, 17rem);
+  aspect-ratio: 3.6 / 1;
+  flex: 0 0 auto;
+  background: url('/plates/experience-timeline-index.svg') center / contain no-repeat;
+  content: '';
+}
+
+.experienceList {
+  --experience-date-width: 10rem;
+  --experience-column-gap: clamp(2rem, 5vw, 5rem);
+  position: relative;
+  display: grid;
+  margin-top: clamp(1.25rem, 2vw, 1.75rem);
+  border-top: 1px solid rgb(33 34 40 / 28%);
+}
+
+.experienceList::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--experience-date-width) + var(--experience-column-gap) / 2);
+  width: 1px;
+  background: rgb(33 34 40 / 28%);
+  content: '';
+}
+
+.experienceEntry {
+  --experience-entry-padding-block: clamp(1.5rem, 2vw, 2rem);
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--experience-date-width) minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
+  column-gap: var(--experience-column-gap);
+  padding-block: var(--experience-entry-padding-block);
+  border-bottom: 1px solid rgb(33 34 40 / 22%);
+}
+
+.experienceEntry::before {
+  position: absolute;
+  top: calc(var(--experience-entry-padding-block) + 0.25rem);
+  left: calc(var(--experience-date-width) + var(--experience-column-gap) / 2 - 0.3rem);
+  width: 0.6rem;
+  height: 0.6rem;
+  border: 1px solid #20283a;
+  background: #d8f34c;
+  content: '';
+  transform: rotate(45deg);
+}
+
+.experiencePeriod {
+  margin: 0;
+  padding-inline-end: 1.5rem;
+  color: #0849b0;
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+  text-align: right;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+.experienceIdentity {
+  display: grid;
+  align-content: start;
+  gap: 0.55rem;
+}
+
+.experienceRole {
+  max-width: 19ch;
+  margin: 0;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(1.5rem, 2.4vw, 2.35rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.experienceCompany {
+  margin: 0;
+  color: #0849b0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.experienceDescription {
+  max-width: 58ch;
+  margin: 0;
+  color: #555761;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 760px) {
+  .experienceList {
+    --experience-rail-offset: 0.3rem;
+    margin-top: 1.25rem;
+  }
+
+  .experienceIntro::after {
+    width: clamp(6rem, 28vw, 8rem);
+  }
+
+  .experienceList::before {
+    left: var(--experience-rail-offset);
+  }
+
+  .experienceEntry {
+    --experience-entry-padding-block: 1.25rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.85rem;
+    padding-inline-start: 1.75rem;
+  }
+
+  .experienceEntry::before {
+    top: calc(var(--experience-entry-padding-block) + 0.25rem);
+    left: 0;
+  }
+
+  .experiencePeriod {
+    padding: 0;
+    text-align: left;
+  }
+
+  .experienceRole {
+    max-width: none;
+    font-size: clamp(1.5rem, 7vw, 2rem);
+  }
+
+  .experienceDescription {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .experienceSection {
+    --experience-section-width: min(calc(100vw - 3rem), 96rem);
+  }
+}

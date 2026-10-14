@@ -1,4 +1,5 @@
 import type { PortfolioExperience } from '@/lib/portfolio';
+import styles from '../Experience.module.css'
 
 interface ExperienceCardProps {
     experience: PortfolioExperience
@@ -8,19 +9,19 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
     const { companyName, position, dateOfEmployment, description } = experience;
 
     return (
-        <article className="timeline-card">
-            <div>
-                <p className="section-label">
-                    {dateOfEmployment.from} - {dateOfEmployment.to}
-                </p>
-                <h3 className="mt-2 font-display text-2xl font-semibold tracking-normal text-foreground">
+        <article className={styles.experienceEntry}>
+            <p className={styles.experiencePeriod}>
+                {dateOfEmployment.from} - {dateOfEmployment.to}
+            </p>
+            <div className={styles.experienceIdentity}>
+                <h3 className={styles.experienceRole}>
                     {position}
                 </h3>
-                <p className="mt-1 text-primary">{companyName}</p>
+                <p className={styles.experienceCompany}>{companyName}</p>
             </div>
 
             {description && (
-                <p className="text-sm leading-6 text-muted-foreground sm:text-base">
+                <p className={styles.experienceDescription}>
                     {description}
                 </p>
             )}
