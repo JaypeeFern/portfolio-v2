@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import BrandIcon from "@/components/BrandIcon";
+import { EntranceDiv, EntranceSubheading } from "@/components/Motion";
 
 export type TechnologyGroup = {
   id: string;
@@ -133,8 +134,8 @@ export function TechnologyGroups({ groups }: { groups: TechnologyGroup[] }) {
     <div className="capability-flow">
       {groups.map((group) => (
         <section className={`skill-cluster skill-cluster--${group.id}`} key={group.id} aria-labelledby={`${group.id}-title`}>
-          <div className={`skill-cluster__plane skill-cluster__plane--${group.id}`}>
-            <h2 id={`${group.id}-title`} className={`skill-cluster__title skill-cluster__title--${group.id}`} aria-label={group.title}>
+          <EntranceDiv className={`skill-cluster__plane skill-cluster__plane--${group.id}`} intro="technology">
+            <EntranceSubheading id={`${group.id}-title`} className={`skill-cluster__title skill-cluster__title--${group.id}`} aria-label={group.title}>
               {group.id === "backend" ? (
                 <>
                   Data,
@@ -146,7 +147,7 @@ export function TechnologyGroups({ groups }: { groups: TechnologyGroup[] }) {
               ) : (
                 group.title
               )}
-            </h2>
+            </EntranceSubheading>
             {group.skills.length > group.capacity && prefersReducedMotion !== true ? (
               <WallCarousel group={group} />
             ) : (
@@ -155,7 +156,7 @@ export function TechnologyGroups({ groups }: { groups: TechnologyGroup[] }) {
                 className={`skill-list skill-list--${group.id}${group.skills.length === 3 ? " skill-list--three" : ""}`}
               />
             )}
-          </div>
+          </EntranceDiv>
         </section>
       ))}
     </div>

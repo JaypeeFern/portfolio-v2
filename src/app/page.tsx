@@ -1,8 +1,8 @@
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import BrandIcon from "@/components/BrandIcon";
 import Contact from "@/components/Contact";
 import Experience from "@/components/Experiences";
+import { EntranceDiv, EntranceHeading, EntranceImage, EntranceLink, EntranceSequence, EntranceSubheading, EntranceText } from "@/components/Motion";
 import PortfolioFooter from "@/components/PortfolioFooter";
 import Projects from "@/components/Projects";
 import { TechnologyGroups, TechnologyOverflow } from "@/components/TechnologyWall";
@@ -51,18 +51,24 @@ function CapabilityGroups({ mobile = false }: { mobile?: boolean }) {
     <div className={mobile ? "mobile-capabilities" : "capability-flow"}>
       {skillGroups.map((group) => (
         <section className={`skill-cluster skill-cluster--${group.id}`} key={group.id} aria-labelledby={`${group.id}-title${mobile ? "-mobile" : ""}`}>
-          <div className={`skill-cluster__plane skill-cluster__plane--${group.id}`}>
-            <h2 id={`${group.id}-title${mobile ? "-mobile" : ""}`} className={`skill-cluster__title skill-cluster__title--${group.id}`}>
+          <EntranceDiv
+            className={`skill-cluster__plane skill-cluster__plane--${group.id}`}
+            intro={mobile ? "technology" : undefined}
+          >
+            <EntranceSubheading
+              id={`${group.id}-title${mobile ? "-mobile" : ""}`}
+              className={`skill-cluster__title skill-cluster__title--${group.id}`}
+            >
               {group.title}
-            </h2>
+            </EntranceSubheading>
             <SkillList skills={group.skills} className={`skill-list skill-list--${group.id}`} />
-          </div>
+          </EntranceDiv>
         </section>
       ))}
       {uncategorizedSkills.length > 0 && (
         <section className="skill-cluster skill-cluster--tools" aria-labelledby={`tools-title${mobile ? "-mobile" : ""}`}>
-          <h2 id={`tools-title${mobile ? "-mobile" : ""}`} className="skill-cluster__title">More in the stack</h2>
-          <SkillList skills={uncategorizedSkills} />
+          <EntranceSubheading id={`tools-title${mobile ? "-mobile" : ""}`} className="skill-cluster__title">More in the stack</EntranceSubheading>
+          <EntranceDiv intro={mobile ? "technology" : undefined}><SkillList skills={uncategorizedSkills} /></EntranceDiv>
         </section>
       )}
     </div>
@@ -96,22 +102,26 @@ function HeroContent({ mobile = false }: { mobile?: boolean }) {
 
   const identity = (
     <>
-      <h1 className="hero-name">
+      <EntranceHeading className="hero-name">
         <span>{firstLine}</span>
         <span className="hero-name__accent">{lastLine}</span>
-      </h1>
-      <p className="hero-role">{about.role}</p>
-      <p className="hero-headline">{about.headline}</p>
+      </EntranceHeading>
+      <EntranceText className="hero-role">{about.role}</EntranceText>
+      <EntranceText className="hero-headline">{about.headline}</EntranceText>
     </>
   );
   const details = (
     <>
-      <p className="hero-description">{about.personalDescription}</p>
-      <p className="hero-proof">{about.stats?.yearsBuilding} years building web products</p>
-      <a className="hero-cta" href={about.ctaLinks?.[0]?.href ?? "#contact"}>
+      <EntranceText className="hero-description">
+        {about.personalDescription}
+      </EntranceText>
+      <EntranceText className="hero-proof">
+        {about.stats?.yearsBuilding} years building web products
+      </EntranceText>
+      <EntranceLink className="hero-cta" href={about.ctaLinks?.[0]?.href ?? "#contact"}>
         {about.ctaLinks?.[0]?.label ?? "Get in touch"}
         <ArrowRight className="hero-cta__arrow" aria-hidden="true" strokeWidth={2} />
-      </a>
+      </EntranceLink>
     </>
   );
 
@@ -135,7 +145,7 @@ function HeroContent({ mobile = false }: { mobile?: boolean }) {
 function ProjectPreview({ mobile = false }: { mobile?: boolean }) {
   return (
     <div className="projects-preview">
-      <h2 id={mobile ? "mobile-projects-title" : "projects-title"}>
+      <h2 id={mobile ? "mobile-projects-title" : "projects-title"} data-intro={mobile ? "technology" : "hero"}>
         <a href="#work-list">Projects</a>
       </h2>
     </div>
@@ -145,10 +155,10 @@ function ProjectPreview({ mobile = false }: { mobile?: boolean }) {
 export default function Home() {
   return (
     <div className="portfolio-page">
-      <main className="relative" id="page-top">
+      <EntranceSequence className="relative" id="page-top">
         <section id="about" className="cutaway-desktop" aria-label="Introduction and technical range">
-          <Image src="/plates/section-art.svg" alt="" fill priority sizes="100vw" className="cutaway-art" />
-          <Image src="/plates/portrait.png" alt="Portrait of John Paul Fernandez" width={1024} height={1536} priority sizes="32vw" className="cutaway-portrait" />
+          <EntranceImage src="/plates/section-art.svg" alt="" fill priority sizes="100vw" intro="art" className="cutaway-art" />
+          <EntranceImage src="/plates/portrait.png" alt="Portrait of John Paul Fernandez" width={1024} height={1536} priority sizes="32vw" intro="portrait" className="cutaway-portrait" />
           <PortfolioNav />
           <HeroContent />
           <TechnologyGroups groups={skillGroups} />
@@ -157,8 +167,8 @@ export default function Home() {
 
         <section id="mobile-about" className="cutaway-mobile" aria-label="Introduction and technical range">
           <div className="mobile-visual">
-            <div className="mobile-visual__art" aria-hidden="true" />
-            <Image src="/plates/portrait.png" alt="Portrait of John Paul Fernandez" width={1024} height={1536} priority sizes="42vw" className="mobile-visual__portrait" />
+            <EntranceDiv className="mobile-visual__art" intro="art" aria-hidden="true" />
+            <EntranceImage src="/plates/portrait.png" alt="Portrait of John Paul Fernandez" width={1024} height={1536} priority sizes="42vw" intro="portrait" className="mobile-visual__portrait" />
             <PortfolioNav mobile />
           </div>
           <HeroContent mobile />
@@ -175,7 +185,7 @@ export default function Home() {
         </div>
 
         <Contact />
-      </main>
+      </EntranceSequence>
 
       <PortfolioFooter />
     </div>

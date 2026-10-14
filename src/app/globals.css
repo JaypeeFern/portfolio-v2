@@ -677,6 +677,133 @@ textarea:focus-visible {
   object-fit: cover;
 }
 
+@keyframes portfolio-intro-reveal {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* Keep the server-rendered page in sequence before hydration begins. */
+.portfolio-page [data-intro] {
+  animation: portfolio-intro-reveal 270ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (min-width: 1000px) {
+  .cutaway-desktop [data-intro="art"] {
+    animation-duration: 350ms;
+    animation-delay: 0ms;
+  }
+
+  .cutaway-desktop .skill-cluster--interfaces [data-intro="technology"] {
+    animation-delay: 365ms;
+  }
+
+  .cutaway-desktop .skill-cluster--applications [data-intro="technology"] {
+    animation-delay: 409ms;
+  }
+
+  .cutaway-desktop .skill-cluster--backend [data-intro="technology"] {
+    animation-delay: 452ms;
+  }
+
+  .cutaway-desktop [data-intro="portrait"] {
+    animation-delay: 705ms;
+  }
+
+  .cutaway-desktop .hero-name {
+    animation-delay: 948ms;
+  }
+
+  .cutaway-desktop .hero-role {
+    animation-delay: 991ms;
+  }
+
+  .cutaway-desktop .hero-headline {
+    animation-delay: 1035ms;
+  }
+
+  .cutaway-desktop .hero-description {
+    animation-delay: 1078ms;
+  }
+
+  .cutaway-desktop .hero-proof {
+    animation-delay: 1122ms;
+  }
+
+  .cutaway-desktop .hero-cta {
+    animation-delay: 1174ms;
+  }
+
+  .cutaway-desktop .projects-preview [data-intro="hero"] {
+    animation-delay: 1239ms;
+  }
+}
+
+@media (max-width: 999px) {
+  .mobile-visual [data-intro="art"] {
+    animation-duration: 367ms;
+    animation-delay: 0ms;
+  }
+
+  .mobile-visual [data-intro="portrait"] {
+    animation-delay: 358ms;
+  }
+
+  .mobile-profile .hero-name {
+    animation-delay: 674ms;
+  }
+
+  .mobile-profile .hero-role {
+    animation-delay: 725ms;
+  }
+
+  .mobile-profile .hero-headline {
+    animation-delay: 771ms;
+  }
+
+  .mobile-profile .hero-description {
+    animation-delay: 817ms;
+  }
+
+  .mobile-profile .hero-proof {
+    animation-delay: 868ms;
+  }
+
+  .mobile-profile .hero-cta {
+    animation-delay: 918ms;
+  }
+
+  .cutaway-mobile .mobile-capabilities .skill-cluster--interfaces [data-intro="technology"] {
+    animation-delay: 1065ms;
+  }
+
+  .cutaway-mobile .mobile-capabilities .skill-cluster--applications [data-intro="technology"] {
+    animation-delay: 1115ms;
+  }
+
+  .cutaway-mobile .mobile-capabilities .skill-cluster--backend [data-intro="technology"] {
+    animation-delay: 1166ms;
+  }
+
+  .cutaway-mobile .projects-preview [data-intro="technology"] {
+    animation-delay: 1225ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-page [data-intro] {
+    animation: none;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
 .cutaway-portrait {
   position: absolute;
   z-index: 2;

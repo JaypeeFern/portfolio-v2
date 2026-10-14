@@ -1,12 +1,69 @@
-'use client'
+'use client';
 
-import { ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import Image, { type ImageProps } from "next/image";
 import { motion } from "motion/react";
 
 interface MotionProps {
     children: ReactNode;
     className?: string;
     delay?: number;
+}
+
+type IntroPhase = "art" | "portrait" | "hero" | "nav" | "technology";
+
+interface EntranceSequenceProps {
+    children: ReactNode;
+    className?: string;
+    id?: string;
+}
+
+export function EntranceSequence({ children, className, id }: EntranceSequenceProps) {
+    return <main id={id} className={className}>{children}</main>;
+}
+
+interface EntranceProps extends ComponentPropsWithoutRef<"div"> {
+    intro?: IntroPhase;
+}
+
+export function EntranceDiv({ children, intro, ...props }: EntranceProps) {
+    return <div {...props} {...(intro ? { "data-intro": intro } : {})}>{children}</div>;
+}
+
+export function EntranceHeading({
+    children,
+    className,
+    ...props
+}: ComponentPropsWithoutRef<"h1">) {
+    return <h1 className={className} data-intro="hero" {...props}>{children}</h1>;
+}
+
+export function EntranceSubheading({
+    children,
+    className,
+    ...props
+}: ComponentPropsWithoutRef<"h2">) {
+    return <h2 className={className} {...props}>{children}</h2>;
+}
+
+export function EntranceText({
+    children,
+    className,
+    ...props
+}: ComponentPropsWithoutRef<"p">) {
+    return <p className={className} data-intro="hero" {...props}>{children}</p>;
+}
+
+export function EntranceLink({
+    children,
+    className,
+    ...props
+}: ComponentPropsWithoutRef<"a">) {
+    return <a className={className} data-intro="hero" {...props}>{children}</a>;
+}
+
+export function EntranceImage({ intro, alt, ...props }: ImageProps & { intro: "art" | "portrait"; alt: string }) {
+    return <Image {...props} alt={alt} data-intro={intro} />;
 }
 
 export function MotionStagger({ children, className }: MotionProps) {
