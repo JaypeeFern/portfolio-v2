@@ -1,7 +1,0 @@
-{
-  "background": "transparent",
-  "references": [
-    "public/portrait.jpg"
-  ],
-  "prompt": "Create a transparent PNG cutout from the supplied real photo. Keep the person’s face, identity, glasses, hair, clothing, pose, and body proportions unchanged. Remove the entire street and building background cleanly, including the car and road. Preserve fine edges around hair and shoulders without halos. Keep the subject from head through upper thighs, centered on a tall canvas with comfortable transparent margin, matching the reference’s natural light and color. Do not add props, text, retouching, shadows, or new clothing."
-}

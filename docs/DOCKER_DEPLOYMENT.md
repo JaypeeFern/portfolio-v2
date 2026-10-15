@@ -103,7 +103,7 @@ X-Forwarded-Proto on their own.
 Copying .env.production.example into Coolify is only a starting point: replace
 the example hostname and secret there, not in Git or the Docker image.
 Production contact delivery also requires about.contactEmail in portfolio.json
-and a verified sender domain in Resend. See docs/resend-setup.md.
+and a verified sender domain in Resend. See [Resend setup](RESEND_SETUP.md).
 
 ## Deploy and verify
 

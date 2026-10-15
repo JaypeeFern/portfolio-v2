@@ -1,7 +1,0 @@
-{
-  "background": "opaque",
-  "references": [
-    ".impeccable/build/section-art-crop.png"
-  ],
-  "prompt": "Create a full-frame background illustration plate for a 1586 × 992 desktop developer portfolio, using the supplied approved composition as a visual reference. Preserve its connected architectural sectional drawing, broad composition, perspective and palette: chalk ground, cobalt upper tier, coral-red middle tier, graphite lower tier, acid-yellow accents, restrained gray concrete edges, and precise dark drafting lines. The background should align with the reference's left profile field, right-hand stacked skill planes, and lower projecting cutaway plane, leaving broad clear regions where semantic HTML will sit.\n\nRecreate only the background artwork. Remove the person and portrait entirely. Remove all letters, names, logos, navigation, headings, skill labels, technology icons, buttons, cards, screens, and project copy; these will be real HTML placed over this plate. Leave the capability planes as clean uninterrupted color surfaces. Do not add rooms, furniture, plants, buildings with windows, people, device mockups, or new objects. Keep the illustrated section dimensional but readable and restrained. Fill the 1586 × 992 frame edge to edge without margins or a border."
-}
