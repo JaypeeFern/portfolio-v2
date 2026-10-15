@@ -1568,12 +1568,15 @@ textarea:focus-visible {
     background: #f7f5ec;
   }
 
+  .mobile-visual__art-frame {
+    position: absolute;
+    inset: 0;
+  }
+
   .mobile-visual__art {
     position: absolute;
     inset: 0;
-    background-image: url("/plates/section-art-mobile.svg");
-    background-size: 100% 100%;
-    background-position: center;
+    object-fit: fill;
   }
 
   .mobile-visual__portrait {
@@ -1766,10 +1769,6 @@ textarea:focus-visible {
 @media (min-width: 640px) and (max-width: 999px) {
   .mobile-visual {
     height: clamp(20rem, 47vw, 28rem);
-  }
-
-  .mobile-visual__art {
-    background-image: url("/plates/section-art-tablet.svg");
   }
 
   .mobile-profile {

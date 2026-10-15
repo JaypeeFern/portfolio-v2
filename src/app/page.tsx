@@ -139,7 +139,7 @@ export default function Home() {
     <div className="portfolio-page">
       <EntranceSequence className="relative" id="page-top">
         <section id="about" className="cutaway-desktop" aria-label="Introduction and technical range">
-          <EntranceImage src="/plates/section-art.webp" alt="" fill fetchPriority="high" sizes="(min-width: 1000px) 100vw, 1px" intro="art" className="cutaway-art" />
+          <EntranceImage src="/plates/section-art.webp" alt="" fill fetchPriority="high" loading="eager" sizes="(min-width: 1000px) 100vw, 1px" intro="art" className="cutaway-art" />
           <EntranceImage src="/plates/portrait-v2.png" alt="Portrait of John Paul Fernandez" width={1024} height={1536} preload sizes="32vw" intro="portrait" className="cutaway-portrait" />
           <PortfolioNav />
           <HeroContent />
@@ -149,7 +149,23 @@ export default function Home() {
 
         <section id="mobile-about" className="cutaway-mobile" aria-label="Introduction and technical range">
           <div className="mobile-visual">
-            <EntranceDiv className="mobile-visual__art" intro="art" aria-hidden="true" />
+            <picture className="mobile-visual__art-frame">
+              <source
+                srcSet="/plates/section-art-tablet.svg"
+                media="(min-width: 640px) and (max-width: 999px)"
+              />
+              <EntranceImage
+                src="/plates/section-art-mobile.svg"
+                alt=""
+                fill
+                fetchPriority="high"
+                loading="eager"
+                sizes="100vw"
+                style={{ objectFit: "fill" }}
+                intro="art"
+                className="mobile-visual__art"
+              />
+            </picture>
             <EntranceImage src="/plates/portrait-v2.png" alt="Portrait of John Paul Fernandez" width={1024} height={1536} preload sizes="42vw" intro="portrait" className="mobile-visual__portrait" />
             <PortfolioNav mobile />
           </div>
