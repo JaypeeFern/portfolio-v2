@@ -148,3 +148,7 @@ npm.cmd run build
 ```
 
 Also verify the page in both light and dark mode, especially the hero, technology rail, contact form, and empty states.
+
+## Production Docker Deployment
+
+The pull-only production deployment, GHCR workflow, Coolify setup, SEO ingress requirements, and rollback steps are documented in [docs/DOCKER_DEPLOYMENT.md](docs/DOCKER_DEPLOYMENT.md). Keep real environment values in Coolify; [.env.production.example](.env.production.example) contains placeholders only.

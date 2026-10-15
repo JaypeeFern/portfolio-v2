@@ -1,0 +1,183 @@
+name: Build and deploy portfolio image
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "public/**"
+      - "package.json"
+      - "package-lock.json"
+      - "next.config.ts"
+      - "postcss.config.mjs"
+      - "tailwind.config.ts"
+      - "tsconfig.json"
+      - "portfolio.json"
+      - "portfolio.schema.json"
+      - "Dockerfile"
+      - "docker-entrypoint.sh"
+      - ".dockerignore"
+      - "docker-compose.yml"
+      - ".env.production.example"
+      - "docs/DOCKER_DEPLOYMENT.md"
+      - ".github/workflows/build-images.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: portfolio-production-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  IMAGE_TAG: ${{ github.sha }}
+  IMAGE_REFERENCE: ghcr.io/jaypeefern/portfolio-v2:${{ github.sha }}
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Validate image revision
+        run: |
+          if [[ ! "$IMAGE_TAG" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "Expected a full lowercase 40-character commit SHA." >&2
+            exit 1
+          fi
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ env.IMAGE_REFERENCE }}
+          labels: |
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.title=portfolio-v2
+          build-args: |
+            IMAGE_REVISION=${{ github.sha }}
+          cache-from: type=gha,scope=portfolio-v2
+          cache-to: type=gha,mode=max,scope=portfolio-v2
+          provenance: false
+
+  verify-image:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      packages: read
+    steps:
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify the exact GHCR image and embedded revision
+        run: |
+          docker buildx imagetools inspect "$IMAGE_REFERENCE"
+          docker pull "$IMAGE_REFERENCE"
+          actual_revision="$(docker image inspect --format='{{ index .Config.Labels "org.opencontainers.image.revision" }}' "$IMAGE_REFERENCE")"
+          if [[ "$actual_revision" != "$IMAGE_TAG" ]]; then
+            echo "GHCR image revision does not match $IMAGE_TAG." >&2
+            exit 1
+          fi
+
+  deploy:
+    needs: verify-image
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pin and trigger the Coolify deployment
+        env:
+          URL: ${{ secrets.COOLIFY_WEBHOOK_URL }}
+          TOKEN: ${{ secrets.COOLIFY_TOKEN }}
+          API_TOKEN: ${{ secrets.COOLIFY_API_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          if [[ -z "$URL" && -z "$TOKEN" && -z "$API_TOKEN" ]]; then
+            echo "Coolify secrets are not configured; image is verified and ready for manual deployment."
+            exit 0
+          fi
+
+          if [[ -z "$URL" || -z "$TOKEN" || -z "$API_TOKEN" ]]; then
+            echo "Coolify deployment configuration is incomplete." >&2
+            echo "Set COOLIFY_WEBHOOK_URL, COOLIFY_TOKEN, and COOLIFY_API_TOKEN together." >&2
+            exit 1
+          fi
+
+          parsed_webhook="$(python3 - "$URL" <<'PY'
+          from urllib.parse import parse_qs, urlparse
+          import re
+          import sys
+
+          webhook = sys.argv[1]
+          try:
+              parsed = urlparse(webhook)
+              hostname = parsed.hostname
+              parsed.port
+          except ValueError:
+              raise SystemExit("Invalid COOLIFY_WEBHOOK_URL: malformed host or port.")
+
+          if parsed.scheme != "https" or not hostname:
+              raise SystemExit("Invalid COOLIFY_WEBHOOK_URL: an HTTPS host is required.")
+          if parsed.username is not None or parsed.password is not None or parsed.fragment:
+              raise SystemExit("Invalid COOLIFY_WEBHOOK_URL: credentials and fragments are not allowed.")
+          if parsed.path.rstrip("/") != "/api/v1/deploy":
+              raise SystemExit("Invalid COOLIFY_WEBHOOK_URL: expected the resource deploy endpoint.")
+
+          query = parse_qs(parsed.query, keep_blank_values=True)
+          uuids = query.get("uuid", [])
+          if len(uuids) != 1 or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]*", uuids[0]):
+              raise SystemExit("Invalid COOLIFY_WEBHOOK_URL: expected one valid resource UUID.")
+          if "tag" in query:
+              raise SystemExit("Invalid COOLIFY_WEBHOOK_URL: tag webhooks are not supported.")
+
+          print(f"{parsed.scheme}://{parsed.netloc}")
+          print(uuids[0])
+          PY
+          )"
+          mapfile -t parsed_values <<< "$parsed_webhook"
+          if [[ "${#parsed_values[@]}" -ne 2 ]]; then
+            echo "Could not validate the Coolify origin and resource UUID." >&2
+            exit 1
+          fi
+
+          coolify_origin="${parsed_values[0]}"
+          application_uuid="${parsed_values[1]}"
+          api_root="${coolify_origin}/api/v1"
+          echo "Pinning Coolify to verified image revision $IMAGE_TAG."
+
+          curl --fail-with-body --silent --show-error --output /dev/null --request PATCH \
+            "$api_root/applications/$application_uuid" \
+            -H "Authorization: Bearer $API_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data "$(jq -n --arg sha "$IMAGE_TAG" '{git_commit_sha: $sha}')"
+
+          coolify_state="$(curl --fail-with-body --silent --show-error \
+            -H "Authorization: Bearer $API_TOKEN" \
+            "$api_root/applications/$application_uuid")"
+          if ! jq -e --arg sha "$IMAGE_TAG" '.git_commit_sha == $sha' \
+            <<< "$coolify_state" >/dev/null; then
+            echo "Coolify did not retain the expected source revision; refusing deployment." >&2
+            exit 1
+          fi
+
+          echo "Coolify source revision verified; triggering its deploy webhook."
+          curl --fail-with-body --silent --show-error --output /dev/null --request POST \
+            -H "Authorization: Bearer $TOKEN" "$URL"
