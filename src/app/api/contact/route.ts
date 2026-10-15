@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { render } from '@react-email/render';
 import { resend } from '@/lib/resend';
 import { EmailTemplate } from '@/components/EmailTemplate';
 import { portfolioData } from '@/lib/portfolio';
@@ -63,12 +64,14 @@ export async function POST(request: Request) {
             );
         }
 
+        const html = await render(EmailTemplate({ email, message, ip, date }));
+
         const { data, error } = await resend.emails.send({
             from: `Portfolio <${contactEmail}>`,
             to: contactEmail,
             subject: 'Portfolio inquiry',
             replyTo: email,
-            react: EmailTemplate({ email, message, ip, date }),
+            html,
         });
 
         if (error) {
