@@ -16,6 +16,7 @@ services:
       SEO_DEPLOYMENT_ENV: ${SEO_DEPLOYMENT_ENV:?Set SEO_DEPLOYMENT_ENV to production}
       SEO_TRUSTED_PROXY_ORIGIN: ${SEO_TRUSTED_PROXY_ORIGIN:?Set the trusted ingress origin policy}
       RESEND_API_KEY: ${RESEND_API_KEY:?Set the Resend API key in Coolify secrets}
+      GOOGLE_ANALYTICS_ID: ${GOOGLE_ANALYTICS_ID:-}
       GOOGLE_SITE_VERIFICATION: ${GOOGLE_SITE_VERIFICATION:-}
       BING_SITE_VERIFICATION: ${BING_SITE_VERIFICATION:-}
     healthcheck:

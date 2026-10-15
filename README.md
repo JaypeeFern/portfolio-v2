@@ -50,6 +50,7 @@ Configure these environment variables:
 | SITE_URL | Required when SEO_DEPLOYMENT_ENV=production; recommended in previews | Canonical HTTPS origin for metadata, canonical links, Open Graph, the sitemap, and JSON-LD. Use the production origin for previews too. |
 | SEO_DEPLOYMENT_ENV | Required for production builds and deployments; values are production, preview, or local | Production enables indexing only when the verified public request origin matches SITE_URL. Development defaults to local when this variable is omitted. |
 | SEO_TRUSTED_PROXY_ORIGIN | Optional; defaults to false | Set true only when trusted ingress overwrites X-SEO-Public-Origin with the public origin and direct access to the application origin is blocked. |
+| GOOGLE_ANALYTICS_ID | Optional | GA4 Measurement ID (G-...). The tag loads only when SEO_DEPLOYMENT_ENV=production. |
 | GOOGLE_SITE_VERIFICATION | Optional | Google Search Console HTML verification token. |
 | BING_SITE_VERIFICATION | Optional | Bing Webmaster Tools HTML verification token. |
 

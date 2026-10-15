@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import localFont from "next/font/local";
+import Script from "next/script";
 import "./globals.css";
 import { portfolioData } from "@/lib/portfolio";
 import { getSeoConfig } from "@/lib/seo/config";
@@ -8,8 +9,6 @@ import {
   createStructuredData,
   serializeJsonLd,
 } from "@/lib/seo/structured-data";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/react";
 
 const inter = localFont({
   src: [
@@ -128,6 +127,13 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const seoConfig = await getRequestSeoConfig();
+  const configuredGoogleAnalyticsId = process.env.GOOGLE_ANALYTICS_ID?.trim();
+  const googleAnalyticsId =
+    seoConfig.deploymentEnvironment === "production" &&
+    configuredGoogleAnalyticsId &&
+    /^G-[A-Z0-9]+$/.test(configuredGoogleAnalyticsId)
+      ? configuredGoogleAnalyticsId
+      : undefined;
   const structuredDataJson = serializeJsonLd(
     createStructuredData(portfolioData, seoConfig.siteUrl),
   );
@@ -143,8 +149,20 @@ export default async function RootLayout({
         <div className="relative">
           {children}
         </div>
-        <SpeedInsights />
-        <Analytics />
+        {googleAnalyticsId ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(googleAnalyticsId)}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || [];
+function gtag(){window.dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', ${JSON.stringify(googleAnalyticsId)});`}
+            </Script>
+          </>
+        ) : null}
       </body>
     </html>
   );

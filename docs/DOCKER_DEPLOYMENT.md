@@ -82,7 +82,9 @@ need GHCR credentials or the login command; keep the pull command.
 4. If the GHCR package is private, add the build-time GHCR_TOKEN and pull
    command above.
 5. Add the runtime values from .env.production.example in Coolify. Mark
-   RESEND_API_KEY as a secret.
+   RESEND_API_KEY as a secret. Optionally set GOOGLE_ANALYTICS_ID to the GA4
+   stream's Measurement ID; the tag loads only when
+   SEO_DEPLOYMENT_ENV=production. Keep the value in Coolify, not in Git.
 6. Set Coolify's Domain to the chosen public HTTPS hostname and Ports Exposes
    to 3000. Leave Public Port empty. Coolify's Traefik proxy attaches the
    resource to its proxy network; Compose itself publishes no host port.
