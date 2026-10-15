@@ -14,8 +14,6 @@ function createContentSecurityPolicy(nonce: string, isProduction: boolean) {
     "base-uri 'self'",
     "form-action 'self'",
     "frame-ancestors 'none'",
-    "trusted-types nextjs nextjs#bundler",
-    "require-trusted-types-for 'script'",
   ];
 
   if (isProduction) {
