@@ -108,6 +108,26 @@
   line-height: 1.65;
 }
 
+/* Keep Experience in scale with the Projects panel on shorter desktops. */
+@media (min-width: 100rem) and (max-height: 75rem) {
+  .experienceSection:global(.folio-section) {
+    --experience-section-width: min(92vw, 88rem);
+    padding-block: clamp(3rem, 4vw, 4.5rem);
+  }
+
+  .experienceSection .experienceIntro h2 {
+    font-size: clamp(2rem, 2.5vw, 3rem);
+  }
+
+  .experienceIntro::after {
+    width: clamp(9rem, 12vw, 13rem);
+  }
+
+  .experienceRole {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+  }
+}
+
 @media (max-width: 760px) {
   .experienceList {
     --experience-rail-offset: 0.3rem;

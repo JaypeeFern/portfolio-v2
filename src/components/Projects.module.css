@@ -149,6 +149,19 @@
   text-wrap: balance;
 }
 
+/* Keep the wide empty-state art from dominating short desktop viewports. */
+@media (min-width: 100rem) and (max-height: 75rem) {
+  .projectsEmptyState {
+    width: min(100%, 88rem);
+    min-height: 22rem;
+    margin-inline: auto;
+  }
+
+  .projectsEmptyStateText {
+    font-size: clamp(2.5rem, 2.45vw, 3rem);
+  }
+}
+
 @media (max-width: 700px) {
   .projectsSection {
     width: min(calc(100vw - 3rem), 96rem);
