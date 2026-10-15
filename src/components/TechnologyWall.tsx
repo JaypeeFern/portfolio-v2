@@ -138,28 +138,30 @@ export function TechnologyGroups({ groups }: { groups: TechnologyGroup[] }) {
     <div className="capability-flow">
       {groups.map((group) => (
         <section className={`skill-cluster skill-cluster--${group.id}`} key={group.id} aria-labelledby={`${group.id}-title`}>
-          <EntranceDiv className={`skill-cluster__plane skill-cluster__plane--${group.id}`} intro="technology">
-            <EntranceSubheading id={`${group.id}-title`} className={`skill-cluster__title skill-cluster__title--${group.id}`} aria-label={group.title}>
-              {group.id === "backend" ? (
-                <>
-                  Data,
-                  <br />
-                  Infrastructure
-                  <br />
-                  &amp; Tools
-                </>
+          <EntranceDiv className={`skill-cluster__plane skill-cluster__plane--${group.id}`}>
+            <div className="skill-cluster__reveal" data-intro="technology">
+              <EntranceSubheading id={`${group.id}-title`} className={`skill-cluster__title skill-cluster__title--${group.id}`} aria-label={group.title}>
+                {group.id === "backend" ? (
+                  <>
+                    Data,
+                    <br />
+                    Infrastructure
+                    <br />
+                    &amp; Tools
+                  </>
+                ) : (
+                  group.title
+                )}
+              </EntranceSubheading>
+              {group.skills.length > group.capacity && prefersReducedMotion !== true ? (
+                <WallCarousel group={group} />
               ) : (
-                group.title
+                <SkillList
+                  skills={group.skills.slice(0, group.capacity)}
+                  className={`skill-list skill-list--${group.id}${group.skills.length === 3 ? " skill-list--three" : ""}`}
+                />
               )}
-            </EntranceSubheading>
-            {group.skills.length > group.capacity && prefersReducedMotion !== true ? (
-              <WallCarousel group={group} />
-            ) : (
-              <SkillList
-                skills={group.skills.slice(0, group.capacity)}
-                className={`skill-list skill-list--${group.id}${group.skills.length === 3 ? " skill-list--three" : ""}`}
-              />
-            )}
+            </div>
           </EntranceDiv>
         </section>
       ))}

@@ -666,9 +666,33 @@ textarea:focus-visible {
   }
 }
 
+@keyframes portfolio-technology-reveal {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(0.65rem);
+  }
+
+  to {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
 /* Keep the server-rendered page in sequence before hydration begins. */
 .portfolio-page [data-intro] {
-  animation: portfolio-intro-reveal 270ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: portfolio-intro-reveal 220ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.portfolio-page [data-intro-assets-ready="false"] .cutaway-desktop .skill-cluster__reveal[data-intro="technology"] {
+  animation: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.portfolio-page [data-intro-assets-ready="true"] .cutaway-desktop .skill-cluster__reveal[data-intro="technology"] {
+  animation: portfolio-technology-reveal 220ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @media (min-width: 1000px) {
@@ -677,99 +701,101 @@ textarea:focus-visible {
     animation-delay: 0ms;
   }
 
+  /* Finish each floor reveal, then leave a brief beat before the next. */
   .cutaway-desktop .skill-cluster--interfaces [data-intro="technology"] {
-    animation-delay: 365ms;
+    animation-delay: 80ms;
   }
 
   .cutaway-desktop .skill-cluster--applications [data-intro="technology"] {
-    animation-delay: 409ms;
+    animation-delay: 350ms;
   }
 
   .cutaway-desktop .skill-cluster--backend [data-intro="technology"] {
-    animation-delay: 452ms;
+    animation-delay: 620ms;
   }
 
   .cutaway-desktop [data-intro="portrait"] {
-    animation-delay: 705ms;
+    animation-delay: 160ms;
   }
 
   .cutaway-desktop .hero-name {
-    animation-delay: 948ms;
+    animation-delay: 260ms;
   }
 
   .cutaway-desktop .hero-role {
-    animation-delay: 991ms;
+    animation-delay: 300ms;
   }
 
   .cutaway-desktop .hero-headline {
-    animation-delay: 1035ms;
+    animation-delay: 340ms;
   }
 
   .cutaway-desktop .hero-description {
-    animation-delay: 1078ms;
+    animation-delay: 380ms;
   }
 
   .cutaway-desktop .hero-proof {
-    animation-delay: 1122ms;
+    animation-delay: 420ms;
   }
 
   .cutaway-desktop .hero-cta {
-    animation-delay: 1174ms;
+    animation-delay: 460ms;
   }
 
   .cutaway-desktop .projects-preview [data-intro="hero"] {
-    animation-delay: 1239ms;
+    animation-delay: 520ms;
   }
 }
 
 @media (max-width: 999px) {
   .mobile-visual [data-intro="art"] {
-    animation-duration: 367ms;
+    animation-duration: 320ms;
     animation-delay: 0ms;
   }
 
   .mobile-visual [data-intro="portrait"] {
-    animation-delay: 358ms;
+    animation-delay: 180ms;
   }
 
   .mobile-profile .hero-name {
-    animation-delay: 674ms;
+    animation-delay: 260ms;
   }
 
   .mobile-profile .hero-role {
-    animation-delay: 725ms;
+    animation-delay: 300ms;
   }
 
   .mobile-profile .hero-headline {
-    animation-delay: 771ms;
+    animation-delay: 340ms;
   }
 
   .mobile-profile .hero-description {
-    animation-delay: 817ms;
+    animation-delay: 380ms;
   }
 
   .mobile-profile .hero-proof {
-    animation-delay: 868ms;
+    animation-delay: 420ms;
   }
 
   .mobile-profile .hero-cta {
-    animation-delay: 918ms;
+    animation-delay: 460ms;
   }
 
+  /* Keep mobile floors sequential too, then show the project preview. */
   .cutaway-mobile .mobile-capabilities .skill-cluster--interfaces [data-intro="technology"] {
-    animation-delay: 1065ms;
+    animation-delay: 620ms;
   }
 
   .cutaway-mobile .mobile-capabilities .skill-cluster--applications [data-intro="technology"] {
-    animation-delay: 1115ms;
+    animation-delay: 890ms;
   }
 
   .cutaway-mobile .mobile-capabilities .skill-cluster--backend [data-intro="technology"] {
-    animation-delay: 1166ms;
+    animation-delay: 1160ms;
   }
 
   .cutaway-mobile .projects-preview [data-intro="technology"] {
-    animation-delay: 1225ms;
+    animation-delay: 1450ms;
   }
 }
 
@@ -1027,6 +1053,11 @@ textarea:focus-visible {
   z-index: 4;
   width: 33.2%;
   transform-style: preserve-3d;
+}
+
+.cutaway-desktop .skill-cluster__reveal {
+  position: absolute;
+  inset: 0;
 }
 
 .cutaway-desktop .skill-cluster__plane--interfaces {

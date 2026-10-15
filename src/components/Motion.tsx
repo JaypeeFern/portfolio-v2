@@ -1,6 +1,6 @@
 'use client';
 
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import { useEffect, useRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
 import Image, { type ImageProps } from "next/image";
 import { motion } from "motion/react";
 
@@ -19,7 +19,14 @@ interface EntranceSequenceProps {
 }
 
 export function EntranceSequence({ children, className, id }: EntranceSequenceProps) {
-    return <main id={id} className={className}>{children}</main>;
+    return (
+        <main id={id} className={className} data-intro-assets-ready="false">
+            {children}
+            <noscript>
+                <style>{`.portfolio-page [data-intro-assets-ready="false"] .cutaway-desktop .skill-cluster__reveal[data-intro="technology"] { animation: none !important; opacity: 1 !important; visibility: visible !important; }`}</style>
+            </noscript>
+        </main>
+    );
 }
 
 interface EntranceProps extends ComponentPropsWithoutRef<"div"> {
@@ -63,7 +70,27 @@ export function EntranceLink({
 }
 
 export function EntranceImage({ intro, alt, ...props }: ImageProps & { intro: "art" | "portrait"; alt: string }) {
-    return <Image {...props} alt={alt} data-intro={intro} />;
+    const imageRef = useRef<HTMLImageElement>(null);
+    const markIntroArtworkReady = () => {
+        document.querySelector("[data-intro-assets-ready]")?.setAttribute("data-intro-assets-ready", "true");
+    };
+
+    useEffect(() => {
+        if (intro === "art" && imageRef.current?.complete) {
+            document.querySelector("[data-intro-assets-ready]")?.setAttribute("data-intro-assets-ready", "true");
+        }
+    }, [intro]);
+
+    return (
+        <Image
+            {...props}
+            ref={imageRef}
+            alt={alt}
+            data-intro={intro}
+            onLoad={intro === "art" ? markIntroArtworkReady : undefined}
+            onError={intro === "art" ? markIntroArtworkReady : undefined}
+        />
+    );
 }
 
 export function MotionStagger({ children, className }: MotionProps) {
