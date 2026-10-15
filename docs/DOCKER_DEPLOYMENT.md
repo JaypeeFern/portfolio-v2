@@ -17,10 +17,13 @@ Production Compose uses this immutable image reference:
 
     ghcr.io/jaypeefern/portfolio-v2:$SOURCE_COMMIT
 
-SOURCE_COMMIT is required by Compose and passed into the container. The image
-also carries its build revision. Its entrypoint requires SOURCE_COMMIT to be
-the same full lowercase 40-character SHA; an empty, short, mutable, or
-mismatched value stops the container. There is no latest tag or fallback.
+SOURCE_COMMIT is required by Compose for the image tag. The selected SHA is
+passed into the container as DEPLOYMENT_REVISION so Coolify's reserved
+SOURCE_COMMIT value does not collide with a same-named application variable.
+The image also carries its build revision. Its entrypoint requires
+DEPLOYMENT_REVISION to be the same full lowercase 40-character SHA; an empty,
+short, mutable, or mismatched value stops the container. There is no latest
+tag or fallback.
 
 The GitHub Actions workflow runs these stages in order:
 
@@ -69,9 +72,11 @@ need GHCR credentials or the login command; keep the pull command.
 
 1. Create an application from the Portfolio V2 repository using Docker Compose
    and the root docker-compose.yml. Select the production branch.
-2. Make Coolify's source commit available during build so Compose receives the
-   exact commit SHA as SOURCE_COMMIT. Do not add a user-owned SOURCE_COMMIT
-   override.
+2. Let Coolify supply its predefined SOURCE_COMMIT from the selected source
+   commit. Compose uses it for the image tag and passes it into the container
+   as DEPLOYMENT_REVISION. Coolify may list SOURCE_COMMIT as required because
+   the image reference uses it; keep that key and do not delete it. Do not set
+   it to a fixed user value or to the error message shown by Compose.
 3. Disable Coolify's Git auto-deploy. GitHub Actions is the deploy trigger so
    Coolify cannot deploy before the GHCR image has passed verification.
 4. If the GHCR package is private, add the build-time GHCR_TOKEN and pull
@@ -126,6 +131,6 @@ deliberately noindex/empty until it is.
 2. In Coolify, select that exact source commit (or its prior successful
    deployment) and redeploy.
 3. Confirm Compose receives that SHA and the container starts. Its entrypoint
-   rejects any image whose embedded revision differs from SOURCE_COMMIT.
+   rejects any image whose embedded revision differs from DEPLOYMENT_REVISION.
 4. To return to the current release, select its full SHA and redeploy. Never
    clear SOURCE_COMMIT or replace it with latest.

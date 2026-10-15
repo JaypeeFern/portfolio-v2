@@ -10,7 +10,8 @@ services:
       NODE_ENV: production
       PORT: "3000"
       HOSTNAME: 0.0.0.0
-      SOURCE_COMMIT: ${SOURCE_COMMIT:?SOURCE_COMMIT must be the exact full lowercase Git commit SHA}
+      # Keep the runtime guard name distinct from Coolify's SOURCE_COMMIT.
+      DEPLOYMENT_REVISION: ${SOURCE_COMMIT:?SOURCE_COMMIT must be the exact full lowercase Git commit SHA}
       SITE_URL: ${SITE_URL:?Set the canonical HTTPS origin in Coolify}
       SEO_DEPLOYMENT_ENV: ${SEO_DEPLOYMENT_ENV:?Set SEO_DEPLOYMENT_ENV to production}
       SEO_TRUSTED_PROXY_ORIGIN: ${SEO_TRUSTED_PROXY_ORIGIN:?Set the trusted ingress origin policy}
