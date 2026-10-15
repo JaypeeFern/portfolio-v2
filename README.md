@@ -39,34 +39,9 @@ The schema and TypeScript type mirror live beside it:
 
 When adding new data-driven fields, update all three together: JSON, schema, and TypeScript type.
 
-## SEO Configuration
+## SEO and Analytics
 
-SEO metadata and structured data use portfolio.json for the name, role, description, location, social links, projects, and experiences. Projects and experiences added there automatically appear in the page's JSON-LD; no per-entry SEO settings are needed.
-
-Configure these environment variables:
-
-| Variable | Requirement | Purpose |
-| --- | --- | --- |
-| SITE_URL | Required when SEO_DEPLOYMENT_ENV=production; recommended in previews | Canonical HTTPS origin for metadata, canonical links, Open Graph, the sitemap, and JSON-LD. Use the production origin for previews too. |
-| SEO_DEPLOYMENT_ENV | Required for production builds and deployments; values are production, preview, or local | Production enables indexing only when the verified public request origin matches SITE_URL. Development defaults to local when this variable is omitted. |
-| SEO_TRUSTED_PROXY_ORIGIN | Optional; defaults to false | Set true only when trusted ingress overwrites X-SEO-Public-Origin with the public origin and direct access to the application origin is blocked. |
-| GOOGLE_ANALYTICS_ID | Optional | GA4 Measurement ID (G-...). The tag loads only when SEO_DEPLOYMENT_ENV=production. |
-| GOOGLE_SITE_VERIFICATION | Optional | Google Search Console HTML verification token. |
-| BING_SITE_VERIFICATION | Optional | Bing Webmaster Tools HTML verification token. |
-
-For production, set SEO_DEPLOYMENT_ENV=production and SITE_URL to the canonical HTTPS origin. Preview deployments must set SEO_DEPLOYMENT_ENV=preview; local development can use SEO_DEPLOYMENT_ENV=local. Production builds reject a missing environment mode, a local mode, a missing production URL, and malformed URLs. Preview and local environments get noindex metadata, a disallow-all robots.txt, an empty sitemap, and an X-Robots-Tag: noindex, nofollow response header. Production requests also get those protections unless their verified public origin matches SITE_URL, including its protocol, hostname, and effective port.
-
-This repository has no deployment or reverse-proxy configuration that establishes a trusted public origin. SEO_TRUSTED_PROXY_ORIGIN therefore defaults to false, and production stays noindex until a trusted origin source is configured. The application ignores X-Forwarded-Host and X-Forwarded-Proto. To enable indexing behind a reverse proxy, configure the ingress to remove any client-supplied X-SEO-Public-Origin header and replace it with one value containing the external request origin (scheme, hostname, and port). Also prevent direct traffic to the application origin, for example by allowing only the proxy's network or using a private tunnel. Then set SEO_TRUSTED_PROXY_ORIGIN=true. Missing, malformed, or ambiguous origin headers remain noindex.
-
-For Cloudflare, configure a trusted edge Worker or request-header rule to overwrite X-SEO-Public-Origin from the visitor-facing scheme, hostname, and port. A dynamic rule can use `concat(http.request.scheme, "://", http.host)`; Cloudflare documents `http.host` as the original client Host even when an Origin Rule changes the origin Host. For a nonstandard public port, confirm the generated value includes it. Ensure the application origin only accepts Cloudflare traffic or uses Cloudflare Tunnel. Cloudflare sets X-Forwarded-Proto to the visitor's protocol, but this application does not trust that header by itself. For another proxy, apply the same strip-and-overwrite rule and ingress restriction. See Cloudflare's documentation for [HTTP headers](https://developers.cloudflare.com/fundamentals/reference/http-headers/), [request header transforms](https://developers.cloudflare.com/rules/transform/request-header-modification/), [the `http.host` field](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.host/), and [origin protection](https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/).
-
-SEO metadata, structured data, robots.txt, and sitemap.xml read the validated SEO environment at request time. A promoted build artifact can use the target environment's SEO_DEPLOYMENT_ENV and SITE_URL without rebuilding; both build and runtime environments must still provide valid configuration.
-
-To change domains, update SITE_URL in the deployment environment and redeploy. Do not set the canonical URL in portfolio.json.
-
-To verify ownership, select HTML tag verification in Google Search Console or Bing Webmaster Tools, set the returned token in the matching variable, deploy, then complete verification in that service. Submit the configured canonical domain's /sitemap.xml in each service's sitemap tools. This repository does not perform external registration or verification.
-
-The sitemap currently lists the homepage, the only public page route. Add a sitemap entry when a real indexable page route is introduced; do not add project or experience entries as URLs until individual pages exist.
+The current SEO implementation, production origin safeguards, Google Search Console setup, GA4 configuration, and verification steps are documented in [docs/SEO.md](docs/SEO.md). SEO metadata and structured data use factual portfolio content from `portfolio.json`.
 
 ## Page Structure
 
