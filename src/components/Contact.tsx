@@ -8,6 +8,12 @@ import { MotionReveal } from "./Motion";
 
 type FormSubmitHandler = NonNullable<ComponentProps<"form">["onSubmit"]>;
 
+declare global {
+    interface Window {
+        gtag?: (command: "event", eventName: string) => void;
+    }
+}
+
 export default function Contact() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -38,6 +44,9 @@ export default function Contact() {
             }
 
             setSubmitStatus('success');
+            if (result.sent === true) {
+                window.gtag?.("event", "generate_lead");
+            }
             (event.target as HTMLFormElement).reset();
         } catch (error) {
             setSubmitStatus('error');

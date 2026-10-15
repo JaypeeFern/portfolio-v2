@@ -26,7 +26,7 @@ export async function POST(request: Request) {
         // Honeypot check
         if (gotcha) {
             // Silently accept without sending
-            return NextResponse.json({ success: true });
+            return NextResponse.json({ success: true, sent: false });
         }
 
         // Basic validation
@@ -79,7 +79,7 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: 'Unable to send message right now' }, { status: 500 });
         }
 
-        return NextResponse.json({ success: true, data });
+        return NextResponse.json({ success: true, sent: true, data });
     } catch (error) {
         console.error('Contact API error:', error);
         return NextResponse.json(
