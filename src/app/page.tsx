@@ -3,6 +3,7 @@ import BrandIcon from "@/components/BrandIcon";
 import Contact from "@/components/Contact";
 import Experience from "@/components/Experiences";
 import { EntranceDiv, EntranceHeading, EntranceImage, EntranceLink, EntranceSequence, EntranceSubheading, EntranceText } from "@/components/Motion";
+import PortfolioNav from "@/components/PortfolioNav";
 import PortfolioFooter from "@/components/PortfolioFooter";
 import Projects from "@/components/Projects";
 import { TechnologyGroups, TechnologyOverflow } from "@/components/TechnologyWall";
@@ -72,25 +73,6 @@ function CapabilityGroups({ mobile = false }: { mobile?: boolean }) {
         </section>
       )}
     </div>
-  );
-}
-
-function PortfolioNav({ mobile = false }: { mobile?: boolean }) {
-  return (
-    <nav className="folio-nav" aria-label="Main navigation">
-      <a className="folio-mark" href={mobile ? "#mobile-about" : "#about"} aria-label="John Paul Fernandez, home">
-        <svg viewBox="0 0 46 32" aria-hidden="true">
-          <path d="M4 3h20L14 29H0z" fill="#0849b0" />
-          <path d="M26 3h20L36 29H16z" fill="#f86d49" />
-        </svg>
-      </a>
-      <div className="folio-nav__links">
-        <a href={mobile ? "#mobile-about" : "#about"}>About</a>
-        <a href="#work-list">Work</a>
-        <a href="#experiences">Experience</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
   );
 }
 
