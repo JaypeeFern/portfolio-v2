@@ -79,6 +79,51 @@ document. The environment variable `GOOGLE_SITE_VERIFICATION` is a different
 verification method; it is not the DNS TXT record and it is not the GA4
 Measurement ID.
 
+### Cloudflare Email Address Obfuscation compatibility
+
+Cloudflare Email Address Obfuscation rewrites email addresses in HTML and
+injects `email-decode.min.js` so the address is readable to visitors but less
+visible to basic email harvesters. This portfolio uses a nonce-based Content
+Security Policy with `strict-dynamic`, which blocks Cloudflare's injected
+decoder because it does not carry the page nonce. The rewritten server HTML
+also differs from the markup React expects, causing hydration error #418 and a
+client-side recovery render.
+
+Keep the CSP strict and disable Email Obfuscation only for the production
+hostname with a Cloudflare Configuration Rule. This avoids the HTML rewrite
+and injected script without changing the setting for other hostnames in the
+zone. The rule is Cloudflare dashboard configuration and is not stored in Git.
+
+To create or restore the rule:
+
+1. In the Cloudflare dashboard, select the `jpfernandez.dev` zone and open
+   **Rules → Overview**.
+2. Select **Create rule → Configuration Rule** and name it
+   `Disable email obfuscation for jpfernandez.dev`.
+3. Under **When incoming requests match**, choose **Custom filter expression**.
+   Set **Field** to **Hostname**, **Operator** to **equals**, and **Value** to
+   `jpfernandez.dev`. Confirm the expression preview is
+   `(http.host eq "jpfernandez.dev")`.
+4. Under **Then the settings are**, add **Email Obfuscation** and set it to
+   **Off**.
+5. Select **Deploy**. Configuration Rules require the hostname's DNS record
+   to be proxied through Cloudflare.
+
+After deploying or changing the rule, open the homepage in a fresh incognito
+window and hard-reload it. Confirm the document response contains the literal
+contact email and does not contain `__cf_email__`,
+`/cdn-cgi/l/email-protection`, or Cloudflare's `email-decode.min.js` script.
+The browser console should no longer report React error #418 or a CSP violation
+for that decoder. The email remains usable as a `mailto:` link, but disabling
+obfuscation makes its address visible in the HTML source and easier for bots to
+harvest, which may increase spam. The contact form is unaffected.
+
+Cloudflare references:
+
+- [Create a Configuration Rule](https://developers.cloudflare.com/rules/configuration-rules/create-dashboard/)
+- [Available Configuration Rule settings](https://developers.cloudflare.com/rules/configuration-rules/settings/)
+- [Email Address Obfuscation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/)
+
 See [.env.production.example](../.env.production.example) for placeholder
 configuration and [Docker deployment](DOCKER_DEPLOYMENT.md) for Coolify
 runtime wiring. `portfolio.json` is the content source; do not put the
