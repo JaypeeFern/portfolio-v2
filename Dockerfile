@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM node:22-alpine AS builder
+FROM node:22.23.4-alpine3.23 AS builder
 
 WORKDIR /app
 
@@ -18,7 +18,7 @@ RUN node -e 'if (!/^[0-9a-f]{40}$/.test(process.env.IMAGE_REVISION || "")) { con
 # hostname or other deployment configuration into the image.
 RUN SEO_DEPLOYMENT_ENV=preview npm run build
 
-FROM node:22-alpine AS runtime
+FROM node:22.23.4-alpine3.23 AS runtime
 
 WORKDIR /app
 

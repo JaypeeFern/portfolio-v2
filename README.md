@@ -17,7 +17,7 @@ npm.cmd run typecheck
 npm.cmd run build
 ```
 
-Node requirement: `>=20.9.0`. The local `.nvmrc` currently points to Node `22`.
+Node requirement: `>=22.23.4 <23`. The local `.nvmrc` pins Node `22.23.4`.
 
 ## Content Source
 
